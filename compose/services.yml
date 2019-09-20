@@ -1,0 +1,108 @@
+version: "3.5"
+
+services:
+  api:
+    image: naos/naos.sample.apigateway
+    container_name: api
+    restart: unless-stopped
+    environment:
+      NTRADA_CONFIG: ntrada.docker
+    ports:
+      - 5000:5000
+    networks:
+      - naos
+
+  availability-service:
+    image: naos/naos.sample.services.availability
+    container_name: availability-service
+    restart: unless-stopped
+    ports:
+      - 5001:5000
+    networks:
+      - naos
+
+  customers-service:
+    image: naos/naos.sample.services.customers
+    container_name: customers-service
+    restart: unless-stopped
+    ports:
+      - 5002:5000
+    networks:
+      - naos
+
+  deliveries-service:
+    image: naos/naos.sample.services.deliveries
+    container_name: deliveries-service
+    restart: unless-stopped
+    ports:
+      - 5003:5000
+    networks:
+      - naos
+
+  identity-service:
+    image: naos/naos.sample.services.identity
+    container_name: identity-service
+    restart: unless-stopped
+    ports:
+      - 5004:5000
+    networks:
+      - naos
+
+  operations-service:
+    image: naos/naos.sample.services.operations
+    container_name: operations-service
+    restart: unless-stopped
+    ports:
+      - 5005:5000
+    networks:
+      - naos
+
+  orders-service:
+    image: naos/naos.sample.services.orders
+    container_name: orders-service
+    restart: unless-stopped
+    ports:
+      - 5006:5000
+    networks:
+      - naos
+
+  ordermaker-service:
+    image: naos/naos.sample.services.ordermaker
+    container_name: ordermaker-service
+    restart: unless-stopped
+    ports:
+      - 5015:5000
+    networks:
+      - naos
+
+  parcels-service:
+    image: naos/naos.sample.services.parcels
+    container_name: parcels-service
+    restart: unless-stopped
+    ports:
+      - 5007:5000
+    networks:
+      - naos
+
+  pricing-service:
+    image: naos/naos.sample.services.pricing
+    container_name: pricing-service
+    restart: unless-stopped
+    ports:
+      - 5008:5000
+    networks:
+      - naos
+
+  vehicles-service:
+    image: naos/naos.sample.services.vehicles
+    container_name: vehicles-service
+    restart: unless-stopped
+    ports:
+      - 5009:5000
+    networks:
+      - naos
+
+networks:
+  naos:
+    name: naos-network
+    external: true
