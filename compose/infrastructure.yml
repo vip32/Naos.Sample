@@ -6,7 +6,7 @@ services:
     container_name: portainer
     restart: always
     ports:
-      - 9000:9000
+      - 9000:9000 # http://localhost:9000
     networks:
       - naos
     volumes:
@@ -72,7 +72,7 @@ services:
       - 6832:6832/udp
       - 9411:9411
       - 14268:14268
-      - 16686:16686
+      - 16686:16686 # http://localhost:16686/search
     networks:
       - naos
 
@@ -92,7 +92,7 @@ services:
     container_name: prometheus
     restart: unless-stopped
     ports:
-      - "9090:9090"
+      - 9090:9090 # http://localhost:9090/graph
     networks:
       - naos
     # volumes:
@@ -104,7 +104,7 @@ services:
     restart: unless-stopped
     ports:
       - 5672:5672
-      - 15672:15672
+      - 15672:15672 # http://localhost:15672
     networks:
       - naos
     # volumes:
@@ -128,7 +128,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
     ports:
-      - 5341:80
+      - 5341:80 # http://localhost:5341
     networks:
       - naos
     # volumes:
@@ -139,7 +139,7 @@ services:
     container_name: vault
     restart: unless-stopped
     ports:
-      - 8200:8200
+      - 8200:8200 # http://localhost:8200
     networks:
       - naos
     environment:

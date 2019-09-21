@@ -20,8 +20,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application.Web", "Naos.Sample.Orders\src\Naos.Sample.Orders.Application.Web\Naos.Sample.Orders.Application.Web.csproj", "{86C17D6A-ACF9-4BA2-832F-1D66435C120E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{13833067-6251-4793-8EEB-0B864CD15474}"
+	ProjectSection(SolutionItems) = preProject
+		Naos.Sample.Customers\Dockerfile = Naos.Sample.Customers\Dockerfile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{4E207B6D-F46A-4B86-9835-E8F3AB532921}"
+	ProjectSection(SolutionItems) = preProject
+		Naos.Sample.Orders\Dockerfile = Naos.Sample.Orders\Dockerfile
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +69,10 @@ Global
 		{86C17D6A-ACF9-4BA2-832F-1D66435C120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C17D6A-ACF9-4BA2-832F-1D66435C120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86C17D6A-ACF9-4BA2-832F-1D66435C120E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

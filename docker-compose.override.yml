@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  customers-service:
+    build: Naos.Sample.Customers # dockerfile
+    container_name: customers-service
+    restart: unless-stopped
+    ports:
+      - 5002:5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - naos
+
+  orders-service:
+    build: Naos.Sample.Orders # dockerfile
+    container_name: orders-service
+    restart: unless-stopped
+    ports:
+      - 5006:5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - naos
+
+networks:
+  naos:
+    external: true
