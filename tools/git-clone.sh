@@ -7,6 +7,6 @@ do
 	 echo Cloning the repository: $REPOSITORY
 	 echo ========================================================
 	 REPO_URL=https://github.com/vip32/$REPOSITORY.git
-	 git clone $REPO_URL
+	 git clone $REPO_URL .\services
 	 cd $REPOSITORY && cd ..
 done
