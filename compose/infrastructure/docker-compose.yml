@@ -1,18 +1,18 @@
 version: "3.5"
 
 services:
-  portainer:
-    image: portainer/portainer
-    container_name: portainer
-    restart: always
-    ports:
-      - 9000:9000 # http://localhost:9000
-    networks:
-      - naos
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer:/data portainer/portainer
-
+#  portainer:
+#    image: portainer/portainer
+#    container_name: portainer
+#    restart: always
+#    ports:
+#      - 9000:9000 # http://localhost:9000
+#    networks:
+#      - naos
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - portainer:/data portainer/portainer
+#
   consul:
     image: consul
     container_name: consul
@@ -87,16 +87,16 @@ services:
     volumes:
       - mongo:/data/db
 
-  prometheus:
-    build: ./prometheus
-    container_name: prometheus
-    restart: unless-stopped
-    ports:
-      - 9090:9090 # http://localhost:9090/graph
-    networks:
-      - naos
-    # volumes:
-    #   - prometheus:/prometheus
+#  prometheus:
+#    build: ./prometheus
+#    container_name: prometheus
+#    restart: unless-stopped
+#    ports:
+#      - 9090:9090 # http://localhost:9090/graph
+#    networks:
+#      - naos
+#    # volumes:
+#    #   - prometheus:/prometheus
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -153,8 +153,8 @@ networks:
     name: naos-network
 
 volumes:
-  portainer:
-    driver: local
+  # portainer:
+  #   driver: local
   # consul:
   #   driver: local
   # grafana:
