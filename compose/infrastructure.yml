@@ -35,6 +35,8 @@ services:
       - naos
     ports:
       - 1433:1433
+    volumes:
+      - sqlserver:/var/opt/mssql
 
   grafana:
     image: grafana/grafana
@@ -143,6 +145,8 @@ volumes:
   #   driver: local
   # grafana:
   #   driver: local
+  sqlserver:
+    driver: local
   mongo:
     driver: local
   # prometheus:
