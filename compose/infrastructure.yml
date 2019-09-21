@@ -17,12 +17,24 @@ services:
     container_name: fabio
     restart: unless-stopped
     environment:
-    - FABIO_REGISTRY_CONSUL_ADDR=consul:8500
+      - FABIO_REGISTRY_CONSUL_ADDR=consul:8500
     networks:
       - naos
     ports:
-    - 9998:9998
-    - 9999:9999
+      - 9998:9998
+      - 9999:9999
+
+  sql:
+    image: microsoft/mssql-server-linux
+    container_name: sqlserver
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Abcd1234!
+    networks:
+      - naos
+    ports:
+      - 1433:1433
 
   grafana:
     image: grafana/grafana
@@ -66,7 +78,7 @@ services:
     container_name: prometheus
     restart: unless-stopped
     ports:
-      - '9090:9090'
+      - "9090:9090"
     networks:
       - naos
     # volumes:
