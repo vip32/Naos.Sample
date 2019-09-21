@@ -1,6 +1,18 @@
 version: "3.5"
 
 services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: always
+    ports:
+      - 9000:9000
+    networks:
+      - naos
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer:/data portainer/portainer
+
   consul:
     image: consul
     container_name: consul
@@ -141,6 +153,8 @@ networks:
     name: naos-network
 
 volumes:
+  portainer:
+    driver: local
   # consul:
   #   driver: local
   # grafana:
