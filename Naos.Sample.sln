@@ -3,33 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29311.281
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Application", "Naos.Sample.Customers\src\Naos.Sample.Customers.Application\Naos.Sample.Customers.Application.csproj", "{791149B8-FB62-42AA-9302-E387CAB2D2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Application", "services\Naos.Sample.Customers\src\Naos.Sample.Customers.Application\Naos.Sample.Customers.Application.csproj", "{791149B8-FB62-42AA-9302-E387CAB2D2D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Domain", "Naos.Sample.Customers\src\Naos.Sample.Customers.Domain\Naos.Sample.Customers.Domain.csproj", "{569E1E20-DFD1-4945-8CB5-7C79288F10A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Domain", "services\Naos.Sample.Customers\src\Naos.Sample.Customers.Domain\Naos.Sample.Customers.Domain.csproj", "{569E1E20-DFD1-4945-8CB5-7C79288F10A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Infrastructure", "Naos.Sample.Customers\src\Naos.Sample.Customers.Infrastructure\Naos.Sample.Customers.Infrastructure.csproj", "{6CEFE3A7-25A2-4BAE-9A41-404247CD10A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Infrastructure", "services\Naos.Sample.Customers\src\Naos.Sample.Customers.Infrastructure\Naos.Sample.Customers.Infrastructure.csproj", "{6CEFE3A7-25A2-4BAE-9A41-404247CD10A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Application.Web", "Naos.Sample.Customers\src\Naos.Sample.Customers.Application.Web\Naos.Sample.Customers.Application.Web.csproj", "{7D84D52D-4312-47CF-B859-D1240BF18C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Customers.Application.Web", "services\Naos.Sample.Customers\src\Naos.Sample.Customers.Application.Web\Naos.Sample.Customers.Application.Web.csproj", "{7D84D52D-4312-47CF-B859-D1240BF18C64}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Domain", "Naos.Sample.Orders\src\Naos.Sample.Orders.Domain\Naos.Sample.Orders.Domain.csproj", "{54897FA8-9DF8-4F89-B7E6-A2EB70BC3A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Domain", "services\Naos.Sample.Orders\src\Naos.Sample.Orders.Domain\Naos.Sample.Orders.Domain.csproj", "{54897FA8-9DF8-4F89-B7E6-A2EB70BC3A4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Infrastructure", "Naos.Sample.Orders\src\Naos.Sample.Orders.Infrastructure\Naos.Sample.Orders.Infrastructure.csproj", "{09F4A526-5124-4126-AD8C-9DB21E5E5FCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Infrastructure", "services\Naos.Sample.Orders\src\Naos.Sample.Orders.Infrastructure\Naos.Sample.Orders.Infrastructure.csproj", "{09F4A526-5124-4126-AD8C-9DB21E5E5FCF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application", "Naos.Sample.Orders\src\Naos.Sample.Orders.Application\Naos.Sample.Orders.Application.csproj", "{652F7E2F-C939-4C98-AABB-ECEEFE5040E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application", "services\Naos.Sample.Orders\src\Naos.Sample.Orders.Application\Naos.Sample.Orders.Application.csproj", "{652F7E2F-C939-4C98-AABB-ECEEFE5040E6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application.Web", "Naos.Sample.Orders\src\Naos.Sample.Orders.Application.Web\Naos.Sample.Orders.Application.Web.csproj", "{86C17D6A-ACF9-4BA2-832F-1D66435C120E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application.Web", "services\Naos.Sample.Orders\src\Naos.Sample.Orders.Application.Web\Naos.Sample.Orders.Application.Web.csproj", "{86C17D6A-ACF9-4BA2-832F-1D66435C120E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{13833067-6251-4793-8EEB-0B864CD15474}"
-	ProjectSection(SolutionItems) = preProject
-		Naos.Sample.Customers\Dockerfile = Naos.Sample.Customers\Dockerfile
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{4E207B6D-F46A-4B86-9835-E8F3AB532921}"
-	ProjectSection(SolutionItems) = preProject
-		Naos.Sample.Orders\Dockerfile = Naos.Sample.Orders\Dockerfile
-	EndProjectSection
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose-services", "compose\services\docker-compose-services.dcproj", "{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose-infrastructure", "compose\infrastructure\docker-compose-infrastructure.dcproj", "{1A1DC161-B034-4705-BB2F-5856242CD5D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{675A93AE-1077-4446-A44C-64D3CA112F8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{2D3FE919-709C-4CF4-81C3-9E39DD7612DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +73,10 @@ Global
 		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +90,10 @@ Global
 		{09F4A526-5124-4126-AD8C-9DB21E5E5FCF} = {4E207B6D-F46A-4B86-9835-E8F3AB532921}
 		{652F7E2F-C939-4C98-AABB-ECEEFE5040E6} = {4E207B6D-F46A-4B86-9835-E8F3AB532921}
 		{86C17D6A-ACF9-4BA2-832F-1D66435C120E} = {4E207B6D-F46A-4B86-9835-E8F3AB532921}
+		{13833067-6251-4793-8EEB-0B864CD15474} = {675A93AE-1077-4446-A44C-64D3CA112F8F}
+		{4E207B6D-F46A-4B86-9835-E8F3AB532921} = {675A93AE-1077-4446-A44C-64D3CA112F8F}
+		{29D958B1-F8CF-4BAE-9FC7-97A7A55B3143} = {2D3FE919-709C-4CF4-81C3-9E39DD7612DC}
+		{1A1DC161-B034-4705-BB2F-5856242CD5D9} = {2D3FE919-709C-4CF4-81C3-9E39DD7612DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66F5B9AD-45DA-4E04-BBD1-769D6C3D7834}

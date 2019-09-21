@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   customers-service:
-    build: Naos.Sample.Customers # dockerfile
+    build: ../../services/Naos.Sample.Customers # dockerfile
     container_name: customers-service
     restart: unless-stopped
     ports:
@@ -16,7 +16,7 @@ services:
       - naos
 
   orders-service:
-    build: Naos.Sample.Orders # dockerfile
+    build: ../../services/Naos.Sample.Orders # dockerfile
     container_name: orders-service
     restart: unless-stopped
     ports:
