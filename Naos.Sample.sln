@@ -17,6 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.Customers", "Na
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.Orders", "Naos.Sample.Orders", "{954185BF-2999-4785-8726-E5AD91F67C54}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{25F5DD8D-5EDC-4722-A875-167AD80312DA}"
+	ProjectSection(SolutionItems) = preProject
+		docs\docker-images.txt = docs\docker-images.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
