@@ -14,8 +14,14 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0F0A2887-4491-41CC-AD9A-E855A0547D3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.Customers", "Naos.Sample.Customers", "{6B016547-892A-4EFF-ABB0-7579098A4BC6}"
+	ProjectSection(SolutionItems) = preProject
+		services\Naos.Sample.Customers\README.md = services\Naos.Sample.Customers\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.Orders", "Naos.Sample.Orders", "{954185BF-2999-4785-8726-E5AD91F67C54}"
+	ProjectSection(SolutionItems) = preProject
+		services\Naos.Sample.Orders\README.md = services\Naos.Sample.Orders\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{25F5DD8D-5EDC-4722-A875-167AD80312DA}"
 	ProjectSection(SolutionItems) = preProject
