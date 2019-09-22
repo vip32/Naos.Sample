@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  naos.sample.customers.application.web:
+    image: ${DOCKER_REGISTRY-}naos/customers
+    build:
+      context: .
+      dockerfile: services/Naos.Sample.Customers/src/Naos.Sample.Customers.Application.Web/Dockerfile
+
+  naos.sample.orders.application.web:
+    image: ${DOCKER_REGISTRY-}naos/orders
+    build:
+      context: .
+      dockerfile: services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web/Dockerfile

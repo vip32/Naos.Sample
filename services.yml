@@ -1,0 +1,41 @@
+apps:
+  - name: api
+    script: dotnet run
+    cwd: ../Naos.Sample.Application.WebGateway/src/Naos.Sample.Application.WebGateway
+    max_restarts: 3
+  - name: availability
+    script: dotnet run
+    cwd: ../Naos.Sample.Availability/src/Naos.Sample.Availability.Application.Web
+    max_restarts: 3
+  - name: customers
+    script: dotnet run
+    cwd: ../Naos.Sample.Customers/src/Naos.Sample.Customers.Application.Web
+    max_restarts: 3
+  - name: deliveries
+    script: dotnet run
+    cwd: ../Naos.Sample.Deliveries/src/Naos.Sample.Deliveries.Application.Web
+    max_restarts: 3
+  - name: identity
+    script: dotnet run
+    cwd: ../Naos.Sample.Identity/src/Naos.Sample.Identity.Application.Web
+    max_restarts: 3
+  - name: operations
+    script: dotnet run
+    cwd: ../Naos.Sample.Operations/src/Naos.Sample.Operations.Application.Web
+    max_restarts: 3
+  - name: orders
+    script: dotnet run
+    cwd: ../Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web
+    max_restarts: 3
+  - name: parcels
+    script: dotnet run
+    cwd: ../Naos.Sample.Parcels/src/Naos.Sample.Parcels.Application.Web
+    max_restarts: 3
+  - name: pricing
+    script: dotnet run
+    cwd: ../Naos.Sample.Pricing/src/Naos.Sample.Pricing.Application.Web
+    max_restarts: 3
+  - name: vehicles
+    script: dotnet run
+    cwd: ../Naos.Sample.Vehicles/src/Naos.Sample.Vehicles.Application.Web
+    max_restarts: 3
