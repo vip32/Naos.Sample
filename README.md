@@ -30,15 +30,15 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
                | Docker host             |          |                 |
                |                         V          |                 |
                |                    .------------.  |                 |
-               |         .----> http| Customers  |  |                 |
-               |         |        80|  Service   |  |                 |
+               |         .--------->| Customers  |  |                 |
+               |         |   http:80|  Service   |  |                 |
                |         |          "------------"  |                 |
             .----------. |                          |                 |
        https| Api      |-"                          |                 |
         5100| Gateway  |                            V                 |
         http| (ocelot) |-.                .------------.              |
-        5000"----------" "----------> http| Customers  |              |
-               |                        80|  Service   |              |
+        5000"----------" "--------------->| Customers  |              |
+               |                   http:80|  Service   |              |
                |                          "------------"              |
                |                                                      |
                "------------------------------------------------------"
