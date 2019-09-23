@@ -1,6 +1,19 @@
 version: '3.4'
 
 services:
+  naos.sample.apigateway.application.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=5100
+    ports:
+      - 5000:80
+      - 5100:443
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - naos
 
   naos.sample.customers.application.web:
     environment:

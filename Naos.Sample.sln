@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naos.Sample.Orders.Application.Web", "services\Naos.Sample.Orders\src\Naos.Sample.Orders.Application.Web\Naos.Sample.Orders.Application.Web.csproj", "{F8B4D4AC-DCAC-4918-ADEA-3A9690C0198B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{BCC014A5-9DBE-4E76-A923-5DED482BF419}"
+	ProjectSection(SolutionItems) = preProject
+		docker.compose.ci.yml = docker.compose.ci.yml
+	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0F0A2887-4491-41CC-AD9A-E855A0547D3A}"
 EndProject
@@ -30,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{25F5DD8D-5
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose-infrastructure", "compose\infrastructure\docker-compose-infrastructure.dcproj", "{1A1DC161-B034-4705-BB2F-5856242CD5D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.ApiGateway", "Naos.Sample.ApiGateway", "{C66656C1-33F5-486A-A069-56ED2BF9EA47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.Sample.ApiGateway.Application.Web", "services\Naos.Sample.ApiGateway\src\Naos.Sample.ApiGateway.Application.Web\Naos.Sample.ApiGateway.Application.Web.csproj", "{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +60,10 @@ Global
 		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A1DC161-B034-4705-BB2F-5856242CD5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +75,8 @@ Global
 		{6B016547-892A-4EFF-ABB0-7579098A4BC6} = {020594E5-5CEC-4E0E-89B9-230555C36B89}
 		{954185BF-2999-4785-8726-E5AD91F67C54} = {020594E5-5CEC-4E0E-89B9-230555C36B89}
 		{1A1DC161-B034-4705-BB2F-5856242CD5D9} = {BCC014A5-9DBE-4E76-A923-5DED482BF419}
+		{C66656C1-33F5-486A-A069-56ED2BF9EA47} = {020594E5-5CEC-4E0E-89B9-230555C36B89}
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A} = {C66656C1-33F5-486A-A069-56ED2BF9EA47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E8179D-3ED6-4AF7-B144-1367FB9D7713}

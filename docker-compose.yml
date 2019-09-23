@@ -1,6 +1,12 @@
 version: '3.4'
 
 services:
+  naos.sample.apigateway.application.web:
+    image: ${DOCKER_REGISTRY-}naos/apigateway
+    build:
+      context: .
+      dockerfile: services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web/Dockerfile
+
   naos.sample.customers.application.web:
     image: ${DOCKER_REGISTRY-}naos/customers
     build:
