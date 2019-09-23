@@ -16,9 +16,31 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 ## Services
 
 #### Customers
-- gateway: http://localhost:5000/customers/api/values
-- direct:  http://localhost:5002/api/values
+- api gateway: https://localhost:5100/customers/api/values
+- direct:  http://localhost:5002/api/values (debugging only)
 
 #### Orders
-- gateway: http://localhost:5000/customers/api/values
-- direct:  http://localhost:5006/api/values
+- api gateway: https://localhost:5100/customers/api/values
+- direct:  http://localhost:5006/api/values (debugging only)
+
+```
+
+                                    http:5002     http:5006
+               .-------------------------|----------|-----------------. 
+               | Docker host             |          |                 |
+               |                         V          |                 |
+               |                    .------------.  |                 |
+               |         .----> http| Customers  |  |                 |
+               |         |        80|  Service   |  |                 |
+               |         |          "------------"  |                 |
+            .----------. |                          |                 |
+       https| Api      |-"                          |                 |
+        5100| Gateway  |                            V                 |
+        http| (ocelot) |-.                .------------.              |
+        5000"----------" "----------> http| Customers  |              |
+               |                        80|  Service   |              |
+               |                          "------------"              |
+               |                                                      |
+               "------------------------------------------------------"
+
+```	
