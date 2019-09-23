@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "naos.sample.customers.application.web",
+          "Host": "customers.application.web",
           "Port": 80
         }
       ],
@@ -17,7 +17,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "naos.sample.orders.application.web",
+          "Host": "orders.application.web",
           "Port": 80
         }
       ],

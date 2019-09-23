@@ -1,20 +1,20 @@
 version: '3.4'
 
 services:
-  naos.sample.apigateway.application.web:
-    image: ${DOCKER_REGISTRY-}naos/apigateway
+  apigateway.application.web:
+    image: ${REGISTRY:-naos}/apigateway.application.web:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web/Dockerfile
+      dockerfile: services/ApiGateway/src/ApiGateway.Application.Web/Dockerfile
 
-  naos.sample.customers.application.web:
-    image: ${DOCKER_REGISTRY-}naos/customers
+  customers.application.web:
+    image: ${REGISTRY:-naos}/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: services/Naos.Sample.Customers/src/Naos.Sample.Customers.Application.Web/Dockerfile
+      dockerfile: services/Customers/src/Customers.Application.Web/Dockerfile
 
-  naos.sample.orders.application.web:
-    image: ${DOCKER_REGISTRY-}naos/orders
+  orders.application.web:
+    image: ${REGISTRY:-naos}/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web/Dockerfile
+      dockerfile: services/Orders/src/Orders.Application.Web/Dockerfile

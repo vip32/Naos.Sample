@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  naos.sample.apigateway.application.web:
+  apigateway.application.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -15,7 +15,7 @@ services:
     networks:
       - naos
 
-  naos.sample.customers.application.web:
+  customers.application.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -25,7 +25,7 @@ services:
     networks:
       - naos
 
-  naos.sample.orders.application.web:
+  orders.application.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
