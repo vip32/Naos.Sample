@@ -35,6 +35,9 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose-infrastructure", "compose\infrastructure\docker-compose-infrastructure.dcproj", "{1A1DC161-B034-4705-BB2F-5856242CD5D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naos.Sample.ApiGateway", "Naos.Sample.ApiGateway", "{C66656C1-33F5-486A-A069-56ED2BF9EA47}"
+	ProjectSection(SolutionItems) = preProject
+		services\Naos.Sample.ApiGateway\README.md = services\Naos.Sample.ApiGateway\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.Sample.ApiGateway.Application.Web", "services\Naos.Sample.ApiGateway\src\Naos.Sample.ApiGateway.Application.Web\Naos.Sample.ApiGateway.Application.Web.csproj", "{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}"
 EndProject
