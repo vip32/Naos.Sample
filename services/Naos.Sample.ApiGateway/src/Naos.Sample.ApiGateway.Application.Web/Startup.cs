@@ -32,7 +32,6 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot(this.Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -46,9 +45,8 @@
                 app.UseHsts();
             }
 
-            app.UseOcelot().Wait();
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseOcelot().Wait();
         }
     }
 }
