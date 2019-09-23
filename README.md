@@ -2,6 +2,40 @@
 
 A mildly opiniated modern cloud service architecture blueprint + reference implementation
 
+### Infrastructure
+```
+
+
+                                             http:5002  http:5006
+               .==============`-------------------|----------|-----------------. 
+               | DOCKER HOST  |                   |          |                 |
+               |==============`                   V          |                 |
+ .----.        |                                .------------.  |              |
+ |    |        |                     .--------->| Customers  |  |              |
+ | C -|        |                     |   http:80|  Service   |  |              |
+ | L -|  https |        .----------. |          `------------`  |              |
+ | I -|   5100 |     433| Api      | |                          |              |
+ | E -|---------------->| Gateway  |-`                          |              |
+ | N -|   http |      80|==========|                            V              |
+ | T -|   5000 |        | (ocelot) |-.                .------------.           |
+ | S -|        |        `----------` `--------------->| Customers  |           |
+ |    |        |                               http:80|  Service   |           |
+ `----`        |                                      `------------`           |
+               |                                                               |
+               `---------------------------------------------------------------`
+
+```	
+
+## Services
+
+#### Customers
+- api gateway: https://localhost:5100/customers/api/values
+- local:  http://localhost:5002/api/values (debugging only)
+
+#### Orders
+- api gateway: https://localhost:5100/customers/api/values
+- local:  http://localhost:5006/api/values (debugging only)
+
 ## Docker
 
 - docker build -t naos/naos.sample.services.customers .
@@ -9,38 +43,6 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - docker run naos/naos.sample.services.customers
 
 - docker network create naos-network
-- docker-compose -f .\infrastructure.yml up -d
-- docker-compose -f .\services.yml -f .\services-local.yml build
-- docker-compose -f .\services.yml -f .\services-local.yml up -d
-
-## Services
-
-#### Customers
-- api gateway: https://localhost:5100/customers/api/values
-- direct:  http://localhost:5002/api/values (debugging only)
-
-#### Orders
-- api gateway: https://localhost:5100/customers/api/values
-- direct:  http://localhost:5006/api/values (debugging only)
-
-```
-
-                                    http:5002     http:5006
-               .-------------------------|----------|-----------------. 
-               | Docker host             |          |                 |
-               |                         V          |                 |
-               |                    .------------.  |                 |
-               |         .--------->| Customers  |  |                 |
-               |         |   http:80|  Service   |  |                 |
-               |         |          "------------"  |                 |
-            .----------. |                          |                 |
-       https| Api      |-"                          |                 |
-        5100| Gateway  |                            V                 |
-        http| (ocelot) |-.                .------------.              |
-        5000"----------" "--------------->| Customers  |              |
-               |                   http:80|  Service   |              |
-               |                          "------------"              |
-               |                                                      |
-               "------------------------------------------------------"
-
-```	
+- docker-compose -f .\compose\infrastructure\docker.compose.yml up -d
+- docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml build
+- docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml up -d
