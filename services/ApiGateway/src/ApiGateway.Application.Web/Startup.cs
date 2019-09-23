@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Ocelot.DependencyInjection;
@@ -44,6 +44,14 @@
             {
                 app.UseHsts();
             }
+
+            app.Map("/echo", b =>
+            {
+                b.Run(async x =>
+                {
+                    await x.Response.WriteAsync("ApiGateway.Application.Web").ConfigureAwait(false);
+                });
+            });
 
             app.UseHttpsRedirection();
             app.UseOcelot().Wait();
