@@ -16,9 +16,9 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 ## Services
 
 #### Customers
-
-http://localhost:5002/api/values
+- gateway: http://localhost:5000/customers/api/values
+- direct:  http://localhost:5002/api/values
 
 #### Orders
-
-http://localhost:5006/api/values
+- gateway: http://localhost:5000/customers/api/values
+- direct:  http://localhost:5006/api/values
