@@ -1,10 +1,14 @@
 ﻿namespace Naos.Sample.ApiGateway.Application.Web
 {
+    using System;
+    using HealthChecks.UI.Client;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Diagnostics.HealthChecks;
     using Ocelot.DependencyInjection;
     using Ocelot.Middleware;
 
@@ -31,6 +35,12 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddUrlGroup(new Uri("http://customers.application.web/health"), name: "customers.application.web", tags: new string[] { "customers.application.web" })
+                .AddUrlGroup(new Uri("http://orders.application.web/health"), name: "orders.application.web", tags: new string[] { "orders.application.web" });
+                // TODO: get hosts from ocelot file?
+
             services.AddOcelot(this.Configuration);
         }
 
@@ -51,6 +61,16 @@
                 {
                     await x.Response.WriteAsync("ApiGateway.Application.Web").ConfigureAwait(false);
                 });
+            });
+
+            app.UseHealthChecks("/health", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            app.UseHealthChecks("/liveness", new HealthCheckOptions
+            {
+                Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
             });
 
             app.UseHttpsRedirection();
