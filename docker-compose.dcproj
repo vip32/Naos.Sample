@@ -6,8 +6,8 @@
     <ProjectGuid>0f0a2887-4491-41cc-ad9a-e855a0547d3a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <!--<DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/values</DockerServiceUrl>-->
-    <DockerServiceUrl>https://localhost:5100/customers/api/values</DockerServiceUrl>
-    <DockerServiceName>customers.application.web</DockerServiceName>
+    <DockerServiceUrl>https://localhost:5100/health</DockerServiceUrl>
+    <DockerServiceName>apigateway.application.web</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.ci.yml">
