@@ -1,6 +1,8 @@
 version: '3.4'
 
 services:
+  # ============= SAMPLE SERVICES ======================================================================================================
+  # ===================================================================================================================================
   apigateway.application.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -34,6 +36,68 @@ services:
                 # In a production environment the external port (5006) should be removed, kept here for microservice debugging purposes
     networks:
       - naos
+
+  # ============= INFRASTRUCTURE ======================================================================================================
+  # ===================================================================================================================================
+  sqlserver:
+    image: microsoft/mssql-server-linux
+    container_name: sqlserver
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
+    networks:
+      - naos
+    ports:
+      - 1433:1433
+    volumes:
+      - sqlserver:/var/opt/mssql
+
+  mongo:
+    image: mongo
+    container_name: mongo   # mongodb://mongo:27017,db2.example.net:2500/?connectTimeoutMS=300000
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    networks:
+      - naos
+    volumes:
+      - mongo:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - 5672:5672
+      - 15672:15672 # http://localhost:15672
+    networks:
+      - naos
+    # volumes:
+    #   - rabbitmq:/var/lib/rabbitmq
+
+  jaeger:
+    image: jaegertracing/all-in-one
+    container_name: jaeger
+    restart: unless-stopped
+    ports:
+      - 5775:5775/udp
+      - 5778:5778
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 9411:9411
+      - 14268:14268
+      - 16686:16686 # http://localhost:16686/search
+    networks:
+      - naos
+
+volumes:
+  sqlserver:
+    driver: local
+  mongo:
+    driver: local
+  rabbitmq:
+    driver: local
 
 networks:
   naos:
