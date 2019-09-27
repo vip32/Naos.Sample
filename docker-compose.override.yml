@@ -7,10 +7,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=5100
+      - ASPNETCORE_HTTPS_PORT=6100
     ports:
-      - 5000:80
-      - 5100:443
+      - 6000:80
+      - 6100:443
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

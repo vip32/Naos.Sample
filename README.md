@@ -14,10 +14,10 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
  |    |        |                     .--------->| Customers  |  |              |
  | C -|        |                     |  http:80 |  Service   |  |              |
  | L -|  https |        .----------. |          `------------`  |              |
- | I -|   5100 |    433 | Api      | |                          |              |
+ | I -|   6100 |    433 | Api      | |                          |              |
  | E -|---------------->| Gateway  |-`                          |              |
  | N -|   http |     80 |==========|                            V              |
- | T -|   5000 |        | (ocelot) |-.                .------------.           |
+ | T -|   6000 |        | (ocelot) |-.                .------------.           |
  | S -|        |        `----------`  `-------------->| Customers  |           |
  |    |        |                              http:80 |  Service   |           |
  `----`        |                                      `------------`           |
@@ -29,16 +29,16 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 ## Services
 
 #### ApiGateway
-- health: https://localhost:5100/health
+- health: https://localhost:6100/health
     - https://customers.application.web/health (port 80)
     - https://orders.application.web/health (port 80)
 
 #### Customers
-- api gateway: https://localhost:5100/customers/api/values -> https://customers.application.web/api/values (port 80)
+- api gateway: https://localhost:6100/customers/api/values -> https://customers.application.web/api/values (port 80)
 - local:  http://localhost:5002/api/values (debugging only)
 
 #### Orders
-- api gateway: https://localhost:5100/customers/api/values -> https://orders.application.web/api/values (port 80)
+- api gateway: https://localhost:6100/customers/api/values -> https://orders.application.web/api/values (port 80)
 - local:  http://localhost:5006/api/values (debugging only)
 
 ## Docker
