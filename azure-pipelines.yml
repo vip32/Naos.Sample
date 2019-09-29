@@ -10,7 +10,7 @@ steps:
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    dockerComposeFile: '**/docker-compose.yml'
+    dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     action: 'Build services'
     includeLatestTag: true
 
@@ -18,6 +18,6 @@ steps:
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    dockerComposeFile: '**/docker-compose.yml'
+    dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     action: 'Push services'
     includeLatestTag: true
