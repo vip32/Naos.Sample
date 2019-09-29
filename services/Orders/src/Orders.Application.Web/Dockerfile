@@ -5,14 +5,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web/Naos.Sample.Orders.Application.Web.csproj", "services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web/"]
-RUN dotnet restore "services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web/Naos.Sample.Orders.Application.Web.csproj"
+COPY ["services/Orders/src/Orders.Application.Web/Orders.Application.Web.csproj", "services/Orders/src/Orders.Application.Web/"]
+RUN dotnet restore "services/Orders/src/Orders.Application.Web/Orders.Application.Web.csproj"
 COPY . .
-WORKDIR "/src/services/Naos.Sample.Orders/src/Naos.Sample.Orders.Application.Web"
-RUN dotnet build "Naos.Sample.Orders.Application.Web.csproj" -c Release -o /app/build
+WORKDIR "/src/services/Orders/src/Orders.Application.Web"
+RUN dotnet build "Orders.Application.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Naos.Sample.Orders.Application.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "Orders.Application.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

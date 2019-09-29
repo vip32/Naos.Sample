@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+	<AssemblyName>Naos.Sample.Orders.Application.Web</AssemblyName>
+    <RootNamespace>Naos.Sample.Orders.Application.Web</RootNamespace>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>b8c78099-1d9b-47ee-8b02-98757e47143d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>

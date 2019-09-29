@@ -5,14 +5,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web/Naos.Sample.ApiGateway.Application.Web.csproj", "services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web/"]
-RUN dotnet restore "services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web/Naos.Sample.ApiGateway.Application.Web.csproj"
+COPY ["services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application.Web.csproj", "services/ApiGateway/src/ApiGateway.Application.Web/"]
+RUN dotnet restore "services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application.Web.csproj"
 COPY . .
-WORKDIR "/src/services/Naos.Sample.ApiGateway/src/Naos.Sample.ApiGateway.Application.Web"
-RUN dotnet build "Naos.Sample.ApiGateway.Application.Web.csproj" -c Release -o /app/build
+WORKDIR "/src/services/ApiGateway/src/ApiGateway.Application.Web"
+RUN dotnet build "ApiGateway.Application.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Naos.Sample.ApiGateway.Application.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "ApiGateway.Application.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
