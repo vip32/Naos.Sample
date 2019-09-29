@@ -1,33 +1,59 @@
-trigger:
-- master
+variables:
+  dockerImagesPush: true
+  deployAzureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0' # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/resources?view=azure-devops#troubleshooting-authorization-for-a-yaml-pipeline
+  vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: GitVersion@5 # alternative https://github.com/adamralph/minver
-  displayName: Apply git version
+trigger:
+- master
+- develop
+- refs/tags/v*
 
-- task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
-  displayName: Docker build images
-  inputs:
-    action: 'Build services'
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
-    dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
-    additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
-    includeLatestTag: true
-    additionalImageTags: $(GitVersion.NuGetVersionV2)
+resources:
+- repo: self
+  fetchDepth: 1
 
-- task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
-  displayName: Docker push images
-  inputs:
-    action: 'Push services'
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
-    dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
-    additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
-    includeLatestTag: true
-    additionalImageTags: $(GitVersion.NuGetVersionV2)
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build job
+    pool:
+      vmImage: $(vmImage)
+    steps:
+    - task: GitVersion@5 # alternative https://github.com/adamralph/minver
+      displayName: Apply git version
+
+    - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
+      displayName: Docker build images
+      inputs:
+        action: 'Build services'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+        azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
+        dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
+        additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
+        includeLatestTag: true
+        additionalImageTags: $(GitVersion.NuGetVersionV2)
+
+    - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
+      displayName: Docker push images
+      enabled: true
+      condition: |
+        and
+        (
+           eq(variables['dockerImagesPush'], 'true'),
+           eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        )
+      inputs:
+        action: 'Push services'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+        azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
+        dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
+        additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
+        includeLatestTag: true
+        additionalImageTags: $(GitVersion.NuGetVersionV2)
