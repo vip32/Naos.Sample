@@ -8,20 +8,20 @@ steps:
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   inputs:
+    action: 'Build services'
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    azureContainerRegistry: 'naossample'
+    # azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
-    action: 'Build services'
     includeLatestTag: true
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   inputs:
+    action: 'Push services'
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    azureContainerRegistry: 'naossample'
+    azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
-    action: 'Push services'
     includeLatestTag: true
