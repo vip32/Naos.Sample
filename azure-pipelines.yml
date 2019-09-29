@@ -10,6 +10,7 @@ steps:
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+    azureContainerRegistry: 'naossample'
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     action: 'Build services'
@@ -19,6 +20,7 @@ steps:
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+    azureContainerRegistry: 'naossample'
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     action: 'Push services'
