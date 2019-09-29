@@ -6,7 +6,7 @@ pool:
 
 steps:
 
-- task: DockerCompose@0
+- task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
@@ -16,7 +16,7 @@ steps:
     action: 'Build services'
     includeLatestTag: true
 
-- task: DockerCompose@0
+- task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
