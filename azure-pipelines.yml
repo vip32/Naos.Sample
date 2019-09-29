@@ -5,8 +5,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: GitVersion@5 # alternative https://github.com/adamralph/minver
+  displayName: Apply git version
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
+  displayName: Docker build images
   inputs:
     action: 'Build services'
     containerregistrytype: 'Azure Container Registry'
@@ -18,6 +21,7 @@ steps:
     additionalImageTags: $(Build.BuildId)
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
+  displayName: Docker push images
   inputs:
     action: 'Push services'
     containerregistrytype: 'Azure Container Registry'
