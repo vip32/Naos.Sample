@@ -14,7 +14,7 @@ steps:
     action: 'Build services'
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0'
-    # azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
+    azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     includeLatestTag: true
