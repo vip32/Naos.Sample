@@ -15,6 +15,7 @@ steps:
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     includeLatestTag: true
+    additionalImageTags: $(Build.BuildId)
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   inputs:
@@ -25,7 +26,4 @@ steps:
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     includeLatestTag: true
-    additionalImageTags: |
-      naos/apigateway.application.web
-      naos/customers.application.web
-      naos/orders.application.web
+    additionalImageTags: $(Build.BuildId)
