@@ -1,0 +1,23 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    includeLatestTag: true
+
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Visual Studio Enterprise – MPN 22463ad3-c6d2-4e7e-911d-c50474250fa0'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
+    includeLatestTag: true
