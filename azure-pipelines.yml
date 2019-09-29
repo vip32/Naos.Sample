@@ -18,7 +18,7 @@ steps:
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     includeLatestTag: true
-    additionalImageTags: $(GitVersion.InformationalVersion)
+    additionalImageTags: $(GitVersion.NuGetVersionV2)
 
 - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
   displayName: Docker push images
@@ -30,4 +30,4 @@ steps:
     dockerComposeFile: '$(System.DefaultWorkingDirectory)/docker-compose.yml'
     additionalDockerComposeFiles: '$(System.DefaultWorkingDirectory)/docker-compose.override.yml'
     includeLatestTag: true
-    additionalImageTags: $(GitVersion.InformationalVersion)
+    additionalImageTags: $(GitVersion.NuGetVersionV2)
