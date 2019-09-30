@@ -14,8 +14,6 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    networks:
-      - naos
 
   customers.application.web:
     environment:
@@ -24,8 +22,6 @@ services:
     ports:
       - 5002:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5002) should be removed, kept here for microservice debugging purposes
-    networks:
-      - naos
 
   orders.application.web:
     environment:
@@ -34,8 +30,6 @@ services:
     ports:
       - 5006:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5006) should be removed, kept here for microservice debugging purposes
-    networks:
-      - naos
 
   # ============= INFRASTRUCTURE ======================================================================================================
   # ===================================================================================================================================
@@ -46,8 +40,6 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
-    networks:
-      - naos
     ports:
       - 1433:1433
     volumes:
@@ -59,8 +51,6 @@ services:
     restart: unless-stopped
     ports:
       - 27017:27017
-    networks:
-      - naos
     volumes:
       - mongo:/data/db
 
@@ -71,8 +61,6 @@ services:
     ports:
       - 5672:5672
       - 15672:15672 # http://localhost:15672
-    networks:
-      - naos
     # volumes:
     #   - rabbitmq:/var/lib/rabbitmq
 
@@ -88,8 +76,6 @@ services:
       - 9411:9411
       - 14268:14268
       - 16686:16686 # http://localhost:16686/search
-    networks:
-      - naos
 
 volumes:
   sqlserver:
@@ -98,7 +84,3 @@ volumes:
     driver: local
   rabbitmq:
     driver: local
-
-networks:
-  naos:
-    external: true

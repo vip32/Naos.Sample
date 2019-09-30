@@ -1,7 +1,17 @@
 version: '3.4'
 
 services:
-  web:
+  apigateway.application.web:
     image: apigateway
+    ports:
+      - 80:80
+
+  customers.application.web:
+    image: customers
+    ports:
+      - 80:80
+
+  orders.application.web:
+    image: orders
     ports:
       - 80:80
