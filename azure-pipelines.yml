@@ -1,7 +1,7 @@
 variables:
   dockerImagesPush: true
-  azureSubscription: 'Naos 22463ad3-c6d2-4e7e-911d-c50474250fa0' # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/resources?view=azure-devops#troubleshooting-authorization-for-a-yaml-pipeline
-  azureContainerRegistry: '{"loginServer":"naossample.azurecr.io", "id" : "/subscriptions/22463ad3-c6d2-4e7e-911d-c50474250fa0/resourceGroups/naos/providers/Microsoft.ContainerRegistry/registries/naossample"}'
+  azureSubscription: 'GlobalDocker 9f5f154e-0b5a-440f-811e-98f8295193a4'
+  azureContainerRegistry: '{"loginServer":"globaldockerregistry.azurecr.io", "id" : "/subscriptions/9f5f154e-0b5a-440f-811e-98f8295193a4/resourceGroups/globaldocker/providers/Microsoft.ContainerRegistry/registries/globaldockerregistry"}'
   vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 
 pool:
