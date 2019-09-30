@@ -51,3 +51,26 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - docker-compose -f .\compose\infrastructure\docker.compose.yml up -d
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml build
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml up -d
+
+### Docker VM
+https://blog.docker.com/2019/08/deploy-dockerized-apps-without-being-a-devops-guru/
+https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart
+
+- `az account set --subscription [SUBSCRIPTIONID]`
+- `az group create --name globaldocker --location westeurope`
+- `az vm create --resource-group globaldocker --name globaldockervm --image UbuntuLTS --admin-username [USERNAME] --generate-ssh-keys --custom-data cloud-init.txt`
+- `az vm open-port --port 80 --resource-group globaldocker --name globaldockervm`
+
+connect with ssh or azure vm serial console
+- `sudo apt install docker-compose`
+
+- create docker-compose.yml
+```
+web:
+  image: nginxdemos/hello
+  ports:
+    - 80:80
+
+```
+
+- `sudo docker-compose up -d`
