@@ -2,16 +2,16 @@ version: '3.4'
 
 services:
   apigateway.application.web:
-    image: apigateway
+    image: ${REGISTRY:-naos}/apigateway.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
       - 80:80
 
   customers.application.web:
-    image: customers
+    image: ${REGISTRY:-naos}/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
       - 80:80
 
   orders.application.web:
-    image: orders
+    image: ${REGISTRY:-naos}/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
       - 80:80
