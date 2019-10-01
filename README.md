@@ -82,7 +82,6 @@ services:
     image: globaldockerregistry.azurecr.io/naos/apigateway.application.web
     ports:
       - 80:80
-      - 433:433
 
   customers.application.web:
     image: globaldockerregistry.azurecr.io/naos/customers.application.web
