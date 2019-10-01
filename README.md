@@ -69,6 +69,11 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - `az vm open-port --port 6100 --priority 1101 --nsg-name globaldockervmNSG --resource-group globaldocker --name globaldockervm`
 - `az vm open-port --port 9000 --priority 1102 --nsg-name globaldockervmNSG --resource-group globaldocker --name globaldockervm`
 
+##### install dotnet (terminal)
+- install dotnet core 2.2 https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/sdk-current
+- export dev cert https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
+  - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p [PFX_PASSWORD]`
+
 ##### connect with ssh or azure vm serial console (terminal)
 - `sudo apt install gnupg2 pass` # due to issue https://github.com/docker/cli/issues/1136
 - `sudo apt install mc`
@@ -80,8 +85,17 @@ version: '3.4'
 services:
   apigateway.application.web:
     image: globaldockerregistry.azurecr.io/naos/apigateway.application.web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=[PFX_PASSWORD]
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
       - 80:80
+      - 443:443
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
 
   customers.application.web:
     image: globaldockerregistry.azurecr.io/naos/customers.application.web
@@ -93,14 +107,15 @@ services:
     ports:
       - 6002:80
 
-#  web:
-#    image: nginxdemos/hello
-#    ports:
-#      - 80:80
+#web:
+#  image: nginxdemos/hello
+#  ports:
+#    - 80:80
 ```
 
 - `sudo docker-compose up -d`
-- remote client: browse to [vmIP]:80 (nginx demo)
+- remote client: browse to http://[vmIP] (apigateway)
+- remote client: browse to https://[vmIP] (apigateway)
 
 ##### setup portainer (terminal) 
 - `docker volume create portainer_data`
@@ -117,3 +132,4 @@ sudo docker login -u [USERNAME] -p [PASSWORD] globaldockerregistry.azurecr.io
 sudo docker pull globaldockerregistry.azurecr.io/naos/orders.application.web
 sudo docker rmi globaldockerregistry.azurecr.io/naos/orders.application.web
 sudo docker-compose up -d
+
