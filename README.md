@@ -69,16 +69,29 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - `az vm open-port --port 6100 --priority 1101 --nsg-name globaldockervmNSG --resource-group globaldocker --name globaldockervm`
 - `az vm open-port --port 9000 --priority 1102 --nsg-name globaldockervmNSG --resource-group globaldocker --name globaldockervm`
 
+##### install docker (terminal)
+- `sudo apt install gnupg2 pass` # due to issue https://github.com/docker/cli/issues/1136
+- `sudo apt install docker-compose`
+
+##### setup gui + rdp (terminal)
+- `sudo apt install mc`
+- `sudo apt-get install lxde -y`
+- `sudo apt-get install xrdp -y`
+- `/etc/init.d/xrdp start`
+- remote client: rdp into [vmIP]:3389
+
+##### setup portainer (terminal) 
+- `docker volume create portainer_data`
+- `docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
+- remote client: browse to [vmIP]:9000 (portainer)
+
 ##### install dotnet (terminal)
 - install dotnet core 2.2 https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/sdk-current
 - export dev cert https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
   - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p [PFX_PASSWORD]`
 
-##### connect with ssh or azure vm serial console (terminal)
-- `sudo apt install gnupg2 pass` # due to issue https://github.com/docker/cli/issues/1136
-- `sudo apt install mc`
-- `sudo apt install docker-compose`
-- create docker-compose.yml FILE
+##### setup docker compose (terminal)
+- create docker-compose.yml file
 ```
 version: '3.4'
 
@@ -113,23 +126,14 @@ services:
 #    - 80:80
 ```
 
+- `sudo docker login -u [USERNAME] -p [PASSWORD] globaldockerregistry.azurecr.io`
+- `sudo docker pull globaldockerregistry.azurecr.io/naos/orders.application.web`
+- `sudo docker rmi globaldockerregistry.azurecr.io/naos/orders.application.web`
 - `sudo docker-compose up -d`
+
 - remote client: browse to http://[vmIP] (apigateway)
 - remote client: browse to https://[vmIP] (apigateway)
 
-##### setup portainer (terminal) 
-- `docker volume create portainer_data`
-- `docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
-- remote client: browse to [vmIP]:9000 (portainer)
 
-##### setup rdp (terminal)
-- `sudo apt-get install lxde -y`
-- `sudo apt-get install xrdp -y`
-- `/etc/init.d/xrdp start`
-- remote client: rdp into [vmIP]:3389
 
-sudo docker login -u [USERNAME] -p [PASSWORD] globaldockerregistry.azurecr.io
-sudo docker pull globaldockerregistry.azurecr.io/naos/orders.application.web
-sudo docker rmi globaldockerregistry.azurecr.io/naos/orders.application.web
-sudo docker-compose up -d
 
