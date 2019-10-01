@@ -39,7 +39,7 @@
                 .AddCheck("self", () => HealthCheckResult.Healthy())
                 .AddUrlGroup(new Uri("http://customers.application.web/health"), name: "customers.application.web", tags: new string[] { "customers.application.web" })
                 .AddUrlGroup(new Uri("http://orders.application.web/health"), name: "orders.application.web", tags: new string[] { "orders.application.web" });
-                // TODO: get hosts from ocelot file?
+            // TODO: get hosts from ocelot file?
 
             services.AddOcelot(this.Configuration);
         }
@@ -55,11 +55,11 @@
                 app.UseHsts();
             }
 
-            app.Map("/echo", b =>
+            app.MapWhen(c => c.Request.Path == "/", a =>
             {
-                b.Run(async x =>
+                a.Run(async x =>
                 {
-                    await x.Response.WriteAsync("ApiGateway.Application.Web").ConfigureAwait(false);
+                    await x.Response.WriteAsync($"<html><body>{this.GetType().Namespace}&nbsp;<a href='/health'>health</a>&nbsp;<a href='/liveness'>liveness</a></body></html>").ConfigureAwait(false);
                 });
             });
 

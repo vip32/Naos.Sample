@@ -20,7 +20,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
-      - 5002:80 # The API Gateway redirects and access through the internal port (80)
+      - 6001:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5002) should be removed, kept here for microservice debugging purposes
 
   orders.application.web:
@@ -28,7 +28,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
-      - 5006:80 # The API Gateway redirects and access through the internal port (80)
+      - 6002:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5006) should be removed, kept here for microservice debugging purposes
 
   # ============= INFRASTRUCTURE ======================================================================================================

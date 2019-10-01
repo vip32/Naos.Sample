@@ -2,16 +2,16 @@ version: '3.4'
 
 services:
   apigateway.application.web:
-    image: ${REGISTRY:-naos}/apigateway.application.web:${PLATFORM:-linux}-${TAG:-latest}
+    image: $globaldockerregistry.azurecr.io/naos/apigateway.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
       - 80:80
 
   customers.application.web:
-    image: ${REGISTRY:-naos}/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
+    image: $globaldockerregistry.azurecr.io/naos/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
-      - 80:80
+      - 6001:80
 
   orders.application.web:
-    image: ${REGISTRY:-naos}/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
+    image: $globaldockerregistry.azurecr.io/naos/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
     ports:
-      - 80:80
+      - 6002:80
