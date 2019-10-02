@@ -41,7 +41,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - api gateway: https://localhost:6100/customers/api/values -> https://orders.application.web/api/values (port 80)
 - local:  http://localhost:5006/api/values (debugging only)
 
-## Docker
+## Docker local
 
 - docker build -t naos/naos.sample.services.customers .
 - docker image ls
@@ -52,14 +52,14 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml build
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml up -d
 
-### Docker VM
+## Docker VM
 - https://blog.docker.com/2019/08/deploy-dockerized-apps-without-being-a-devops-guru/
 - https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart
 - https://buildazure.com/how-to-setup-an-ubuntu-linux-vm-in-azure-with-remote-desktop-rdp-access/
 - https://azure.github.io/AppService/2018/06/27/How-to-use-Azure-Container-Registry-for-a-Multi-container-Web-App.html
 - https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
 - 
-##### setup linux docker vm (azure console)
+##### create linux docker vm (azure console)
 - `az account set --subscription [SUBSCRIPTIONID]`
 - `az group create --name globaldocker --location westeurope`
 - `az vm create --resource-group globaldocker --name globaldockervm --image UbuntuLTS --admin-username [USERNAME] --generate-ssh-keys --custom-data cloud-init.txt`
@@ -73,7 +73,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - `sudo apt install gnupg2 pass` # due to issue https://github.com/docker/cli/issues/1136
 - `sudo apt install docker-compose`
 
-##### setup ubuntu gui + rdp (terminal)
+##### setup ubuntu desktop + rdp (terminal)
 - `sudo apt install mc`
 - `sudo apt-get install lxde -y`
 - `sudo apt-get install xrdp -y`
