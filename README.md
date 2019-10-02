@@ -73,25 +73,34 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - `sudo apt install gnupg2 pass` # due to issue https://github.com/docker/cli/issues/1136
 - `sudo apt install docker-compose`
 
-##### setup gui + rdp (terminal)
+##### setup ubuntu gui + rdp (terminal)
 - `sudo apt install mc`
 - `sudo apt-get install lxde -y`
 - `sudo apt-get install xrdp -y`
 - `/etc/init.d/xrdp start`
 - remote client: rdp into [vmIP]:3389
 
-##### setup portainer (terminal) 
+##### setup docker management application (terminal) 
 - `docker volume create portainer_data`
 - `docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
 - remote client: browse to [vmIP]:9000 (portainer)
 
 ##### install dotnet (terminal)
 - install dotnet core 2.2 https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/sdk-current
-- export dev cert https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
+  - `wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb`
+  - `sudo dpkg -i packages-microsoft-prod.deb`
+  - `sudo add-apt-repository universe`
+  - `sudo apt-get update`
+  - `sudo apt-get install apt-transport-https`
+  - `sudo apt-get update`
+  - `sudo apt-get install dotnet-sdk-`2.2`
+  - `sudo apt-get install dotnet-sdk-3.0`
+- export the host dev cert https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
   - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p [PFX_PASSWORD]`
 
 ##### setup docker compose (terminal)
-- create docker-compose.yml file
+- `nano docker-compose.yml`
+
 ```
 version: '3.4'
 
@@ -108,7 +117,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ${HOME}/.aspnet/https:/https/
+      - ${HOME}/.aspnet/https:/https/ # dev cert
 
   customers.application.web:
     image: globaldockerregistry.azurecr.io/naos/customers.application.web
@@ -126,13 +135,13 @@ services:
 #    - 80:80
 ```
 
-- `sudo docker login -u [USERNAME] -p [PASSWORD] globaldockerregistry.azurecr.io`
-- `sudo docker pull globaldockerregistry.azurecr.io/naos/orders.application.web`
-- `sudo docker rmi globaldockerregistry.azurecr.io/naos/orders.application.web`
-- `sudo docker-compose up -d`
+- `sudo docker login -u [USERNAME] -p [PASSWORD] globaldockerregistry.azurecr.io` # login to registry
+- `sudo docker pull globaldockerregistry.azurecr.io/naos/orders.application.web` # test
+- `sudo docker rmi globaldockerregistry.azurecr.io/naos/orders.application.web` # test
+- `sudo docker-compose up -d` # start the docker-compose.yml
 
-- remote client: browse to http://[vmIP] (apigateway)
-- remote client: browse to https://[vmIP] (apigateway)
+- remote client: browse to http://[vmIP] (apigateway) # verify
+- remote client: browse to https://[vmIP] (apigateway) # verify
 
 
 
