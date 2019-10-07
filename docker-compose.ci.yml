@@ -3,9 +3,17 @@ version: '3.4'
 services:
   apigateway.application.web:
     image: globaldockerregistry.azurecr.io/naos/apigateway.application.web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=[PASSWORD]
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
       - 80:80
-      - 433:433
+      - 443:443
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
 
   customers.application.web:
     image: globaldockerregistry.azurecr.io/naos/customers.application.web
@@ -16,3 +24,8 @@ services:
     image: globaldockerregistry.azurecr.io/naos/orders.application.web
     ports:
       - 6002:80
+
+#web:
+#  image: nginxdemos/hello
+#  ports:
+#    - 80:80

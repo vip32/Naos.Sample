@@ -146,3 +146,5 @@ services:
 
 
 
+TODO:
+- add a reverse proxy ([howto](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.0))
