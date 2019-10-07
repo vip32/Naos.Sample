@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.5'
 
 services:
   apigateway.application.web:
@@ -9,6 +9,7 @@ services:
       - ASPNETCORE_HTTPS_PORT=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=[PASSWORD]
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -17,11 +18,13 @@ services:
 
   customers.application.web:
     image: globaldockerregistry.azurecr.io/naos/customers.application.web
+    restart: unless-stopped
     ports:
       - 6001:80
 
   orders.application.web:
     image: globaldockerregistry.azurecr.io/naos/orders.application.web
+    restart: unless-stopped
     ports:
       - 6002:80
 
