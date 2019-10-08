@@ -29,12 +29,12 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 ### Deployment (CI/CD)
 ```
                  
-               .------------.                                            .------------------.
-               | Azure      |                                            | Linux VM         |
-               | Devops     |             .------------.                 |                  |
-               | Pipeline   |             | Azure      |                 | [docker-compose] |
-               `------------`             | Container  |       pull      `------------------`
-                   - build                | Registry   |<<===============- pull
+               .--------------.                                          .------------------.
+               | Azure Devops |                                          | Linux VM         |
+               | Pipeline     |           .------------.                 |                  |
+               |              |           | Azure      |                 | [docker-compose] |
+               | [build]      |           | Container  |                 `------------------`
+               `--------------`           | Registry   |<<===============- pull
                    - publish -==========>>|            |
                                           | [images]   |
                                           `------------`
