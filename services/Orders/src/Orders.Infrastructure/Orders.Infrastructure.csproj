@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Naos.Sample.Orders.Infrastructure</AssemblyName>
+    <RootNamespace>Naos.Sample.Orders.Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Customers\src\Customers.Domain\Customers.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
