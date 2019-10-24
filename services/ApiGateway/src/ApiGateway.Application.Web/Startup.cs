@@ -74,6 +74,8 @@
                 Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
             });
 
+            // TODO: auth https://github.com/catcherwong-archive/APIGatewayDemo/tree/master/APIGatewayJWTAuthenticationDemo
+
             app.UseHttpsRedirection();
             app.UseOcelot().Wait();
         }

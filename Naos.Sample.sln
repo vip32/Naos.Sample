@@ -30,17 +30,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway.Application.Web", "services\ApiGateway\src\ApiGateway.Application.Web\ApiGateway.Application.Web.csproj", "{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Application", "services\Customers\src\Customers.Application\Customers.Application.csproj", "{B4DD7B68-4908-49FC-ACD8-564B56F93897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Application", "services\Customers\src\Customers.Application\Customers.Application.csproj", "{B4DD7B68-4908-49FC-ACD8-564B56F93897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Domain", "services\Customers\src\Customers.Domain\Customers.Domain.csproj", "{FCCBF09D-DD67-4AEF-998B-6A561717C8E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Domain", "services\Customers\src\Customers.Domain\Customers.Domain.csproj", "{FCCBF09D-DD67-4AEF-998B-6A561717C8E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Infrastructure", "services\Customers\src\Customers.Infrastructure\Customers.Infrastructure.csproj", "{1397B299-B497-452B-A32D-DC2AAEB205D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Infrastructure", "services\Customers\src\Customers.Infrastructure\Customers.Infrastructure.csproj", "{1397B299-B497-452B-A32D-DC2AAEB205D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Application", "services\Orders\src\Orders.Application\Orders.Application.csproj", "{5E5DC964-3027-4CA6-9DED-744D8DEF4683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orders.Application", "services\Orders\src\Orders.Application\Orders.Application.csproj", "{5E5DC964-3027-4CA6-9DED-744D8DEF4683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Domain", "services\Orders\src\Orders.Domain\Orders.Domain.csproj", "{45C23953-6241-482B-A97B-B478398286C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orders.Domain", "services\Orders\src\Orders.Domain\Orders.Domain.csproj", "{45C23953-6241-482B-A97B-B478398286C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Infrastructure", "services\Orders\src\Orders.Infrastructure\Orders.Infrastructure.csproj", "{0F7CEB01-E8B6-4043-907D-52E21A88DA98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orders.Infrastructure", "services\Orders\src\Orders.Infrastructure\Orders.Infrastructure.csproj", "{0F7CEB01-E8B6-4043-907D-52E21A88DA98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FB0A7D93-CEB5-47EE-8040-9C84BB01AA81}"
 EndProject
@@ -53,6 +53,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CA4666FC-1A21-40CB-BBFA-D47F7286B579}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{651D95CA-EFCE-47E9-A49A-CCC1B185B0B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE4A426E-E97B-4DA1-9DE2-D299C9E52970}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{53B3D6A5-A440-40BA-9C43-725053EA598A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5C8F6607-BF7A-48FC-A504-96F3004F5BC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,7 +122,7 @@ Global
 		{954185BF-2999-4785-8726-E5AD91F67C54} = {020594E5-5CEC-4E0E-89B9-230555C36B89}
 		{1A1DC161-B034-4705-BB2F-5856242CD5D9} = {BCC014A5-9DBE-4E76-A923-5DED482BF419}
 		{C66656C1-33F5-486A-A069-56ED2BF9EA47} = {020594E5-5CEC-4E0E-89B9-230555C36B89}
-		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A} = {C66656C1-33F5-486A-A069-56ED2BF9EA47}
+		{2A3E0BE4-F6B5-4C71-9752-CDBC66446F1A} = {EE4A426E-E97B-4DA1-9DE2-D299C9E52970}
 		{B4DD7B68-4908-49FC-ACD8-564B56F93897} = {FB0A7D93-CEB5-47EE-8040-9C84BB01AA81}
 		{FCCBF09D-DD67-4AEF-998B-6A561717C8E6} = {FB0A7D93-CEB5-47EE-8040-9C84BB01AA81}
 		{1397B299-B497-452B-A32D-DC2AAEB205D5} = {FB0A7D93-CEB5-47EE-8040-9C84BB01AA81}
@@ -129,6 +135,9 @@ Global
 		{CC9190C5-06DD-4126-9C44-52B0C087AE27} = {954185BF-2999-4785-8726-E5AD91F67C54}
 		{CA4666FC-1A21-40CB-BBFA-D47F7286B579} = {954185BF-2999-4785-8726-E5AD91F67C54}
 		{651D95CA-EFCE-47E9-A49A-CCC1B185B0B9} = {6B016547-892A-4EFF-ABB0-7579098A4BC6}
+		{EE4A426E-E97B-4DA1-9DE2-D299C9E52970} = {C66656C1-33F5-486A-A069-56ED2BF9EA47}
+		{53B3D6A5-A440-40BA-9C43-725053EA598A} = {C66656C1-33F5-486A-A069-56ED2BF9EA47}
+		{5C8F6607-BF7A-48FC-A504-96F3004F5BC8} = {C66656C1-33F5-486A-A069-56ED2BF9EA47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E8179D-3ED6-4AF7-B144-1367FB9D7713}
