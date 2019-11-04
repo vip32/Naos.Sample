@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{25F5DD8D-5EDC-4722-A875-167AD80312DA}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
+		Directory.Build.props = Directory.Build.props
 		docs\docker-images.txt = docs\docker-images.txt
 		README.md = README.md
 	EndProjectSection
