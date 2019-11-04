@@ -3,7 +3,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /src
 COPY ["services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application.Web.csproj", "services/ApiGateway/src/ApiGateway.Application.Web/"]
 RUN dotnet restore "services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application.Web.csproj"
