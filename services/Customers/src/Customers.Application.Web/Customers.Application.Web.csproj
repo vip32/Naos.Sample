@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-	<AssemblyName>Naos.Sample.Customers.Application.Web</AssemblyName>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  	<AssemblyName>Naos.Sample.Customers.Application.Web</AssemblyName>
     <RootNamespace>Naos.Sample.Customers.Application.Web</RootNamespace>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>4381e3d3-aa6c-4fcf-9a37-6b2d6a050952</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
@@ -12,12 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="2.2.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Customers.Application\Customers.Application.csproj" />
   </ItemGroup>
 
 </Project>

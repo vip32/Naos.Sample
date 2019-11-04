@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Naos.Sample.Orders.Domain</AssemblyName>
+    <RootNamespace>Naos.Sample.Orders.Domain</RootNamespace>
+  </PropertyGroup>
+
+</Project>

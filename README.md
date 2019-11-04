@@ -7,7 +7,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 
 
                                              http:5002  http:5006
-               +==============+-------------------|-------------|--------------. 
+               +==============+-------------------|-------------|--------------.
                | DOCKER HOST  |                   |             |              |
                +==============+                   V             |              |
  .----.        |                                .------------.  |              |
@@ -24,7 +24,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
                |                                                               |
                `---------------------------------------------------------------`
 
-```	
+```
 
 ### Deployment (CI/CD)
 ```
@@ -63,9 +63,11 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - docker run naos/naos.sample.services.customers
 
 - docker network create naos-network
-- docker-compose -f .\compose\infrastructure\docker.compose.yml up -d
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml build
 - docker-compose -f .\docker.compose.yml -f .\docker.compose.override.yml up -d
+
+## Docker interactive
+- `docker run --rm -it -v %cd%:/Naos mcr.microsoft.com/dotnet/core/sdk dotnet`
 
 ## Docker VM
 - https://blog.docker.com/2019/08/deploy-dockerized-apps-without-being-a-devops-guru/
@@ -73,7 +75,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - https://buildazure.com/how-to-setup-an-ubuntu-linux-vm-in-azure-with-remote-desktop-rdp-access/
 - https://azure.github.io/AppService/2018/06/27/How-to-use-Azure-Container-Registry-for-a-Multi-container-Web-App.html
 - https://docs.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-2.2
-- 
+-
 ##### create linux docker vm (azure console)
 - `az account set --subscription [SUBSCRIPTIONID]`
 - `az group create --name globaldocker --location westeurope`
@@ -95,7 +97,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 - `/etc/init.d/xrdp start`
 - remote client: rdp into [vmIP]:3389
 
-##### setup docker management application (terminal) 
+##### setup docker management application (terminal)
 - `docker volume create portainer_data`
 - `docker run -d -p 8000:8000 -p 9000:9000 --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
 - remote client: browse to [vmIP]:9000 (portainer)
