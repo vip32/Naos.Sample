@@ -9,7 +9,7 @@ COPY ["services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application
 RUN dotnet restore "services/ApiGateway/src/ApiGateway.Application.Web/ApiGateway.Application.Web.csproj"
 COPY . .
 WORKDIR "/src/services/ApiGateway/src/ApiGateway.Application.Web"
-RUN dotnet build "ApiGateway.Application.Web.csproj" -c Release -o /app/build --no-restore
+RUN dotnet build "ApiGateway.Application.Web.csproj" -c Release -o /app/build --no-restore -verbosity:normal
 
 FROM build AS publish
 RUN dotnet publish "ApiGateway.Application.Web.csproj" -c Release -o /app/publish
