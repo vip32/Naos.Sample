@@ -7,14 +7,14 @@ services:
       context: .
       dockerfile: services/ApiGateway/src/ApiGateway.Application.Web/Dockerfile
 
-#  customers.application.web:
-#    image: ${REGISTRY:-naos}/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
-#    build:
-#      context: .
-#      dockerfile: services/Customers/src/Customers.Application.Web/Dockerfile
-#
-#  orders.application.web:
-#    image: ${REGISTRY:-naos}/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
-#    build:
-#      context: .
-#      dockerfile: services/Orders/src/Orders.Application.Web/Dockerfile
+  customers.application.web:
+    image: ${REGISTRY:-naos}/customers.application.web:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: services/Customers/src/Customers.Application.Web/Dockerfile
+
+  orders.application.web:
+    image: ${REGISTRY:-naos}/orders.application.web:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: services/Orders/src/Orders.Application.Web/Dockerfile
