@@ -43,6 +43,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
+	                          # Server=127.0.0.1,1433;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
     ports:
       - 1433:1433
     volumes:
