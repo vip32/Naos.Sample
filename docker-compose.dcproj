@@ -6,7 +6,7 @@
     <ProjectGuid>0f0a2887-4491-41cc-ad9a-e855a0547d3a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <!--<DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/values</DockerServiceUrl>-->
-    <DockerServiceUrl>https://localhost:6100/health</DockerServiceUrl>
+    <DockerServiceUrl>https://localhost:6100</DockerServiceUrl>
     <DockerServiceName>apigateway.application.web</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
