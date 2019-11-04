@@ -9,10 +9,10 @@ COPY ["services/Orders/src/Orders.Application.Web/Orders.Application.Web.csproj"
 RUN dotnet restore "services/Orders/src/Orders.Application.Web/Orders.Application.Web.csproj"
 COPY . .
 WORKDIR "/src/services/Orders/src/Orders.Application.Web"
-RUN dotnet build "Orders.Application.Web.csproj" -c Release -o /app/build
+RUN dotnet build "Orders.Application.Web.csproj" -c Release -o /app/build --no-restore -verbosity:normal
 
 FROM build AS publish
-RUN dotnet publish "Orders.Application.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "Orders.Application.Web.csproj" -c Release -o /app/publish --no-restore -verbosity:normal
 
 FROM base AS final
 WORKDIR /app
