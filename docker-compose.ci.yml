@@ -16,17 +16,17 @@ services:
     volumes:
       - ${HOME}/.aspnet/https:/https/
 
-  customers.application.web:
-    image: globaldockerregistry.azurecr.io/naos/customers.application.web
-    restart: unless-stopped
-    ports:
-      - 6001:80
-
-  orders.application.web:
-    image: globaldockerregistry.azurecr.io/naos/orders.application.web
-    restart: unless-stopped
-    ports:
-      - 6002:80
+#  customers.application.web:
+#    image: globaldockerregistry.azurecr.io/naos/customers.application.web
+#    restart: unless-stopped
+#    ports:
+#      - 6001:80
+#
+#  orders.application.web:
+#    image: globaldockerregistry.azurecr.io/naos/orders.application.web
+#    restart: unless-stopped
+#    ports:
+#      - 6002:80
 
 #web:
 #  image: nginxdemos/hello
