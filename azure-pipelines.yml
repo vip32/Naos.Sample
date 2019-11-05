@@ -5,9 +5,6 @@ variables:
   vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 #  vmImage: 'windows-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 
-#pool:
-#  vmImage: 'ubuntu-latest'
-
 trigger:
 - master
 - develop
