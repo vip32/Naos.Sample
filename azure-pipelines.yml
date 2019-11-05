@@ -2,7 +2,7 @@ variables:
   dockerImagesPush: true
   azureSubscription: 'GlobalDocker 9f5f154e-0b5a-440f-811e-98f8295193a4'
   azureContainerRegistry: '{"loginServer":"globaldockerregistry.azurecr.io", "id" : "/subscriptions/9f5f154e-0b5a-440f-811e-98f8295193a4/resourceGroups/globaldocker/providers/Microsoft.ContainerRegistry/registries/globaldockerregistry"}'
-  vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
+  vmImage: 'ubuntu-latest' # needed for linux container build/push https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 #  vmImage: 'windows-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 
 trigger:
@@ -30,7 +30,7 @@ stages:
     displayName: Build job
     pool:
       vmImage: $(vmImage)
-#    steps:
+    steps:
 #    - task: GitVersion@5 # alternative https://github.com/adamralph/minver
 #      displayName: Apply git version
 
