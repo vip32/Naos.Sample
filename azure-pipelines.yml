@@ -2,7 +2,7 @@ variables:
   dockerImagesPush: true
   azureSubscription: 'GlobalDocker 9f5f154e-0b5a-440f-811e-98f8295193a4'
   azureContainerRegistry: '{"loginServer":"globaldockerregistry.azurecr.io", "id" : "/subscriptions/9f5f154e-0b5a-440f-811e-98f8295193a4/resourceGroups/globaldocker/providers/Microsoft.ContainerRegistry/registries/globaldockerregistry"}'
-  vmImage: 'ubuntu-latest' # needed for linux container build/push https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
+  vmImage: 'ubuntu-latest' # needed for linux container build/push https://stackoverflow.com/questions/57732505/run-linux-containers-in-an-azure-devops-windows-hosted-build-agent
 
 trigger:
 - master
