@@ -60,7 +60,7 @@
             {
                 a.Run(async x =>
                 {
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/liveness'>liveness</a></p></body></html>").ConfigureAwait(false);
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}!!!</h1><p><a href='/health'>health</a>&nbsp;<a href='/liveness'>liveness</a></p></body></html>").ConfigureAwait(false);
                 });
             });
 
