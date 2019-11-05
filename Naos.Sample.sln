@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{25F5DD8D-5
 		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		docs\docker-images.txt = docs\docker-images.txt
+		gitversion.yml = gitversion.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
