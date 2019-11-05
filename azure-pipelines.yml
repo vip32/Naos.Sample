@@ -2,10 +2,11 @@ variables:
   dockerImagesPush: true
   azureSubscription: 'GlobalDocker 9f5f154e-0b5a-440f-811e-98f8295193a4'
   azureContainerRegistry: '{"loginServer":"globaldockerregistry.azurecr.io", "id" : "/subscriptions/9f5f154e-0b5a-440f-811e-98f8295193a4/resourceGroups/globaldocker/providers/Microsoft.ContainerRegistry/registries/globaldockerregistry"}'
-  vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
+  # vmImage: 'ubuntu-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
+  vmImage: 'windows-latest' # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#use-a-microsoft-hosted-agent
 
-pool:
-  vmImage: 'ubuntu-latest'
+#pool:
+#  vmImage: 'ubuntu-latest'
 
 trigger:
 - master
