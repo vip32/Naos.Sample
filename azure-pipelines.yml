@@ -18,13 +18,21 @@ stages:
 - stage: Build
   displayName: Build stage
   jobs:
+  - job: Prepare
+    displayName: Prepare job
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - task: GitVersion@5 # alternative https://github.com/adamralph/minver
+      displayName: Apply git version
+
   - job: Build
     displayName: Build job
     pool:
       vmImage: $(vmImage)
-    steps:
-    - task: GitVersion@5 # alternative https://github.com/adamralph/minver
-      displayName: Apply git version
+#    steps:
+#    - task: GitVersion@5 # alternative https://github.com/adamralph/minver
+#      displayName: Apply git version
 
     - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
       displayName: Docker build images
