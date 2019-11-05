@@ -28,8 +28,6 @@ stages:
     steps:
     - task: GitVersion@5 # alternative https://github.com/adamralph/minver
       displayName: Apply git version
-      inputs:
-        configFilePath: gitversion.yml
 
     - task: DockerCompose@0 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker-compose?view=azure-devops
       displayName: Docker build images
