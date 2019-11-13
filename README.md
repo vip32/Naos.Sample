@@ -5,7 +5,6 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
 ### Infrastructure
 ```
 
-
                                              http:5002  http:5006
                +==============+-------------------|-------------|--------------.
                | DOCKER HOST  |                   |             |              |
