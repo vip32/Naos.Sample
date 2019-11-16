@@ -76,9 +76,24 @@ services:
       - 5778:5778
       - 6831:6831/udp
       - 6832:6832/udp
-      - 9411:9411
+      # - 9411:9411
       - 14268:14268
       - 16686:16686 # http://localhost:16686/search
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    restart: unless-stopped
+    environment:
+      - STORAGE_TYPE=mem # more here https://github.com/openzipkin-attic/docker-zipkin
+      # Uncomment to disable scribe
+      # - SCRIBE_ENABLED=false
+      # Uncomment to enable self-tracing
+      # - SELF_TRACING_ENABLED=true
+      # Uncomment to enable debug logging
+      # - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG
+    ports:
+      - 9411:9411 # http://localhost:9411/zipkin/
 
 volumes:
   sqlserver:
