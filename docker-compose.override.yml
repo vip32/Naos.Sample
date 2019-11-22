@@ -37,7 +37,7 @@ services:
   # ============= INFRASTRUCTURE ======================================================================================================
   # ===================================================================================================================================
   sqlserver:
-    image: microsoft/mssql-server-linux
+    image: microsoft/mssql-server-linux # TODO: this is outdated, use https://hub.docker.com/_/microsoft-mssql-server
     container_name: sqlserver
     restart: unless-stopped
     environment:
