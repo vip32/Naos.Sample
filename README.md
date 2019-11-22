@@ -168,3 +168,4 @@ TODO:
 Identity Provider
 - keycloak docker compose + sql : https://github.com/keycloak/keycloak-containers/blob/master/docker-compose-examples/keycloak-mssql.yml
 - aspnetcore+keycloak (gateway) : https://stackoverflow.com/questions/41721032/keycloak-client-for-asp-net-core/43875291#43875291
+                                  https://github.com/Gimly/SampleNetCoreAngularKeycloak
