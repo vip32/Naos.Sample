@@ -164,3 +164,7 @@ services:
 
 TODO:
 - add a reverse proxy ([howto](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.0))
+
+Identity Provider
+- keycloak docker compose + sql : https://github.com/keycloak/keycloak-containers/blob/master/docker-compose-examples/keycloak-mssql.yml
+- aspnetcore+keycloak (gateway) : https://stackoverflow.com/questions/41721032/keycloak-client-for-asp-net-core/43875291#43875291
