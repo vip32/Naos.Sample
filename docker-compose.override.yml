@@ -36,17 +36,24 @@ services:
 
   # ============= INFRASTRUCTURE ======================================================================================================
   # ===================================================================================================================================
-  sqlserver:
-    image: microsoft/mssql-server-linux # TODO: this is outdated, use https://hub.docker.com/_/microsoft-mssql-server
-    container_name: sqlserver
+  mssql:
+    image: mcr.microsoft.com/mssql/server
+    container_name: mssql
     restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
+      - MSSQL_PID=Developer
     ports:
       - 1433:1433
     volumes:
-      - sqlserver:/var/opt/mssql
+      - mssql:/var/opt/mssql
+
+  mssqlscripts:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - mssql
+    command: /bin/bash -c 'until /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P "Abcd1234!" -Q "create database Keycloak"; do sleep 5; done'
 
   mongo:
     image: mongo
@@ -85,7 +92,7 @@ services:
     container_name: zipkin
     restart: unless-stopped
     environment:
-      - STORAGE_TYPE=mem # more here https://github.com/openzipkin-attic/docker-zipkin
+      - STORAGE_TYPE=mem # more here https://github.com/openzipkin-attic/docker-zipkin mysql: https://www.linode.com/docs/uptime/analytics/zipkin-server-configuration-using-docker-and-mysql/
       # Uncomment to disable scribe
       # - SCRIBE_ENABLED=false
       # Uncomment to enable self-tracing
@@ -95,8 +102,26 @@ services:
     ports:
       - 9411:9411 # http://localhost:9411/zipkin/
 
+  keycloak:
+    image: jboss/keycloak
+    container_name: keycloak
+    restart: unless-stopped
+    depends_on:
+      - mssql
+      - mssqlscripts
+    ports:
+      - 8080:8080 # http://localhost:8080 (admin/admin)
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=mssql # https://github.com/keycloak/keycloak-containers/tree/master/docker-compose-examples
+      - DB_USER=sa
+      - DB_PASSWORD=Abcd1234!
+      - DB_ADDR=mssql
+      - DB_DATABASE=Keycloak
+
 volumes:
-  sqlserver:
+  mssql:
     driver: local
   mongo:
     driver: local
