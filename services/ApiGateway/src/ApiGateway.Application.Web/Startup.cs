@@ -37,7 +37,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks()
-                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" })
                 .AddUrlGroup(new Uri("http://customers.application.web/health"), name: "customers.application.web", tags: new string[] { "customers.application.web" })
                 .AddUrlGroup(new Uri("http://orders.application.web/health"), name: "orders.application.web", tags: new string[] { "orders.application.web" });
             // TODO: get hosts from ocelot file?
@@ -59,12 +59,9 @@
             app.MapWhen(c => c.Request.Path == "/", a =>
             {
                 a.Run(async x =>
-                {
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a></p></body></html>").ConfigureAwait(false);
-                });
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a></p></body></html>").ConfigureAwait(false));
             });
 
-            // todo: use UseEndpoints https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1
             app.UseHealthChecks("/health", new HealthCheckOptions()
             {
                 Predicate = _ => true,
@@ -77,13 +74,31 @@
             });
             app.UseHealthChecks("/health/live", new HealthCheckOptions
             {
-                Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
+                Predicate = r => r.Tags.Contains("live"),
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
             // TODO: auth https://github.com/catcherwong-archive/APIGatewayDemo/tree/master/APIGatewayJWTAuthenticationDemo
 
             app.UseHttpsRedirection();
-            app.UseOcelot().Wait();
+            //app.UseEndpoints(endpoints => // todo: use UseEndpoints https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1
+            //{
+            //    endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+            //    {
+            //        Predicate = _ => true,
+            //        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            //    });
+            //    endpoints.MapHealthChecks("/health/ready", new HealthCheckOptions
+            //    {
+            //        Predicate = _ => true,
+            //        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            //    });
+            //    endpoints.MapHealthChecks("/health/live", new HealthCheckOptions
+            //    {
+            //        Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
+            //    });
+            //});
+            app.UseOcelot().Wait(); // useendpoints?
         }
     }
 }
