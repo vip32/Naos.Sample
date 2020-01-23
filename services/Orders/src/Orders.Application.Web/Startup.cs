@@ -1,5 +1,6 @@
 ﻿namespace Naos.Sample.Orders.Application.Web
 {
+    using System;
     using HealthChecks.UI.Client;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -31,14 +32,20 @@
                 app.UseDeveloperExceptionPage();
             }
 
+            // todo: use UseEndpoints https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1
             app.UseHealthChecks("/health", new HealthCheckOptions()
             {
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
-            app.UseHealthChecks("/liveness", new HealthCheckOptions
+            app.UseHealthChecks("/health/ready", new HealthCheckOptions
             {
-                Predicate = r => r.Name.Contains("self", System.StringComparison.OrdinalIgnoreCase)
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            app.UseHealthChecks("/health/live", new HealthCheckOptions
+            {
+                Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
             });
 
             app.UseRouting();

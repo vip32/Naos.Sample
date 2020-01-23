@@ -60,16 +60,22 @@
             {
                 a.Run(async x =>
                 {
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/liveness'>liveness</a></p></body></html>").ConfigureAwait(false);
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a></p></body></html>").ConfigureAwait(false);
                 });
             });
 
+            // todo: use UseEndpoints https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1
             app.UseHealthChecks("/health", new HealthCheckOptions()
             {
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
-            app.UseHealthChecks("/liveness", new HealthCheckOptions
+            app.UseHealthChecks("/health/ready", new HealthCheckOptions
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            app.UseHealthChecks("/health/live", new HealthCheckOptions
             {
                 Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
             });
