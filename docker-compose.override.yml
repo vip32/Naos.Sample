@@ -12,6 +12,8 @@ services:
     ports:
       - 6000:80
       - 6100:443
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6000"]
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -21,6 +23,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6001"]
     ports:
       - 6001:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5002) should be removed, kept here for microservice debugging purposes
@@ -30,6 +34,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6002"]
     ports:
       - 6002:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5006) should be removed, kept here for microservice debugging purposes
@@ -44,6 +50,8 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
       - MSSQL_PID=Developer
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S mssql -U SA -P 'Abcd1234!' -Q 'select 1'
     ports:
       - 1433:1433
     volumes:
