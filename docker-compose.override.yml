@@ -13,7 +13,8 @@ services:
       - 6000:80
       - 6100:443
 #    healthcheck:
-#      test: ["CMD", "curl", "-f", "https://localhost/health"] # https://docs.docker.com/compose/compose-file/
+#      test: ["CMD", "curl", "-sS", "http://127.0.0.1"]
+#      test: curl -sS http://127.0.0.1 || exit 1
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
