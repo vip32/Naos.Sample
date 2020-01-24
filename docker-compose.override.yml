@@ -13,7 +13,7 @@ services:
       - 6000:80
       - 6100:443
 #    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:6000"]
+#      test: ["CMD", "curl", "-f", "https://localhost/health"]
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -24,7 +24,7 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:80
     restart: unless-stopped
 #    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:6001"]
+#      test: ["CMD", "curl", "-f", "http://localhost/health"]
     ports:
       - 6001:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5002) should be removed, kept here for microservice debugging purposes
@@ -35,7 +35,7 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:80
     restart: unless-stopped
 #    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:6002"]
+#      test: ["CMD", "curl", "-f", "http://localhost/health"]
     ports:
       - 6002:80 # The API Gateway redirects and access through the internal port (80)
                 # In a production environment the external port (5006) should be removed, kept here for microservice debugging purposes
