@@ -70,6 +70,12 @@ services:
     restart: unless-stopped
     ports:
       - 27017:27017
+#    healthcheck:
+#      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
+#      interval: 10s
+#      timeout: 10s
+#      retries: 5
+#      start_period: 20s
     volumes:
       - mongo:/data/db
 
