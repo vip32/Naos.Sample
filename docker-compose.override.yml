@@ -109,7 +109,7 @@ services:
       # Uncomment to enable debug logging
       # - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG
     healthcheck:
-      test: wget http://127.0.0.1:9411/health || exit 1
+      test: wget -O health.json http://127.0.0.1:9411/health || exit 1
     ports:
       - 9411:9411 # http://localhost:9411/zipkin/
 
