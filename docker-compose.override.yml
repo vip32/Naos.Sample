@@ -138,7 +138,7 @@ services:
       - DB_DATABASE=Keycloak
 
   consul:
-    container_name: consul
+    container_name: consul # clustered: https://github.com/hashicorp/consul/blob/master/demo/docker-compose-cluster/docker-compose.yml
     image: consul:latest
     ports:
       - 8500:8500 # http://localhost:8500/ui
