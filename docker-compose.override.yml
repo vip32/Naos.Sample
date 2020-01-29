@@ -137,6 +137,17 @@ services:
       - DB_ADDR=mssql
       - DB_DATABASE=Keycloak
 
+  consul:
+    container_name: consul
+    image: consul:latest
+    ports:
+      - 8500:8500 # http://localhost:8500/ui
+      - 8300:8300
+    volumes:
+      - ./config:/config
+      - ./_data/consul:/data
+    command: agent -server -data-dir=/data -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect=1 -ui
+
 volumes:
   mssql:
     driver: local
