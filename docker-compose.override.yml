@@ -49,7 +49,7 @@ services:
     restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Abcd1234! # Server=sqlserver;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
+      - SA_PASSWORD=Abcd1234! # Server=mssql;Database=naos_sample;User=sa;Password=Abcd1234!;Trusted_Connection=False;MultipleActiveResultSets=True;
       - MSSQL_PID=Developer
     healthcheck:
       test: /opt/mssql-tools/bin/sqlcmd -S mssql -U SA -P 'Abcd1234!' -Q 'select 1'
