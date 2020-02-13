@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vip32_Naos&metric=alert_status)](https://sonarcloud.io/dashboard?id=vip32_Naos)
+
 # Naos.Sample
 
 A mildly opiniated modern cloud service architecture blueprint + reference implementation
