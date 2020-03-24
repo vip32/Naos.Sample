@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{25F5DD
 		docs\docker-images.txt = docs\docker-images.txt
 		gitversion.yml = gitversion.yml
 		README.md = README.md
+		REST.http = REST.http
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose-infrastructure", "compose\infrastructure\docker-compose-infrastructure.dcproj", "{1A1DC161-B034-4705-BB2F-5856242CD5D9}"
@@ -62,7 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{53B3D6A5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5C8F6607-BF7A-48FC-A504-96F3004F5BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.UnitTests", "services\Customers\tests\Customers.UnitTests\Customers.UnitTests.csproj", "{2D4F1E51-D377-4852-83BD-C490FE7CCEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.UnitTests", "services\Customers\tests\Customers.UnitTests\Customers.UnitTests.csproj", "{2D4F1E51-D377-4852-83BD-C490FE7CCEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

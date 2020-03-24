@@ -2,6 +2,7 @@
 {
     using System;
     using HealthChecks.UI.Client;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
     using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Diagnostics.HealthChecks;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Tokens;
     using Ocelot.DependencyInjection;
     using Ocelot.Middleware;
 
@@ -42,6 +44,26 @@
                 .AddUrlGroup(new Uri("http://orders.application.web/health"), name: "orders.application.web", tags: new string[] { "orders.application.web" });
             // TODO: get hosts from ocelot file?
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = this.Configuration["Oidc:Authority"];
+                    options.IncludeErrorDetails = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        NameClaimType = "name",
+                        RoleClaimType = "groups",
+                        ValidateAudience = false,
+                        //ValidAudiences = new[] { "master-realm", "account" },
+                        ValidateIssuer = true,
+                        ValidIssuer = this.Configuration["Oidc:Authority"],
+                        ValidateLifetime = false
+                    };
+                });
+
+            services.AddControllers();
+            services.AddAuthorization();
+
             services.AddOcelot(this.Configuration);
         }
 
@@ -59,7 +81,7 @@
             app.MapWhen(c => c.Request.Path == "/", a =>
             {
                 a.Run(async x =>
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a></p></body></html>").ConfigureAwait(false));
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a>&nbsp;<a href='/api/echo'>echo</a></p></body></html>").ConfigureAwait(false));
             });
 
             app.UseHealthChecks("/health", new HealthCheckOptions()
@@ -81,23 +103,13 @@
             // TODO: auth https://github.com/catcherwong-archive/APIGatewayDemo/tree/master/APIGatewayJWTAuthenticationDemo
 
             app.UseHttpsRedirection();
-            //app.UseEndpoints(endpoints => // todo: use UseEndpoints https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1
-            //{
-            //    endpoints.MapHealthChecks("/health", new HealthCheckOptions()
-            //    {
-            //        Predicate = _ => true,
-            //        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            //    });
-            //    endpoints.MapHealthChecks("/health/ready", new HealthCheckOptions
-            //    {
-            //        Predicate = _ => true,
-            //        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            //    });
-            //    endpoints.MapHealthChecks("/health/live", new HealthCheckOptions
-            //    {
-            //        Predicate = r => r.Name.Contains("self", StringComparison.OrdinalIgnoreCase)
-            //    });
-            //});
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(e => e.MapControllers());
+
             app.UseOcelot().Wait(); // useendpoints?
         }
     }
