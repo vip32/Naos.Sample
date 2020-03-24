@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{25F5DD
 		Directory.Build.props = Directory.Build.props
 		docs\docker-images.txt = docs\docker-images.txt
 		gitversion.yml = gitversion.yml
+		tools\imports\keycloak-realm-export.json = tools\imports\keycloak-realm-export.json
 		README.md = README.md
 		REST.http = REST.http
 	EndProjectSection

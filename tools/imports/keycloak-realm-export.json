@@ -58,7 +58,7 @@
       }
     ],
     "client": {
-      "aspnetcore-keycloak": [
+      "naos-sample": [
         {
           "id": "1bcbc614-5aad-4fe8-8004-576e8a8c4696",
           "name": "uma_protection",
@@ -93,14 +93,14 @@
   "clients": [
     {
       "id": "9bec9dc2-5d07-4f57-bcdf-ad4031c3ab63",
-      "clientId": "aspnetcore-keycloak",
-      "name": "aspnetcore-keycloak",
-      "description": "aspnetcore-keycloak",
+      "clientId": "naos-sample",
+      "name": "naos-sample",
+      "description": "naos-sample",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "aspnetcore-keycloak",
+      "secret": "naos-sample",
       "redirectUris": [
         "https://localhost:6100/signin-oidc"
       ],
@@ -630,7 +630,7 @@
         "resources": [
           {
             "name": "Default Resource",
-            "type": "urn:aspnetcore-keycloak:resources:default",
+            "type": "urn:naos-sample:resources:default",
             "ownerManagedAccess": false,
             "attributes": {},
             "_id": "d995e3a3-92ec-4574-b74c-b9f2c5042faa",
@@ -659,7 +659,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "defaultResourceType": "urn:aspnetcore-keycloak:resources:default",
+              "defaultResourceType": "urn:naos-sample:resources:default",
               "applyPolicies": "[\"Default Policy\"]"
             }
           }

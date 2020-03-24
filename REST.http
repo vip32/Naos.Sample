@@ -12,11 +12,11 @@ POST {{baseUrl}}/protocol/openid-connect/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=password
-&client_id=aspnetcore-keycloak
+&client_id=naos-sample
 &client_secret=1beb5df9-01dd-46c3-84a8-b65eca50ad57
-&resource=aspnetcore-keycloak
-&username=guest
-&password=guest
+&resource=naos-sample
+&username=admin
+&password=admin
 &scope=openid
 
 @access_token = {{sign_in_request.response.body.$.access_token}}
@@ -35,9 +35,9 @@ POST {{baseUrl}}/protocol/openid-connect/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token
-&client_id=aspnetcore-keycloak
+&client_id=naos-sample
 &client_secret=1beb5df9-01dd-46c3-84a8-b65eca50ad57
-&resource=aspnetcore-keycloak
+&resource=naos-sample
 &refresh_token={{refresh_token}}
 
 @access_token = {{refresh_token_request.response.body.$.access_token}}
