@@ -1,4 +1,4 @@
-@baseUrl = https://global-keycloak.azurewebsites.net/auth/realms/master
+@baseUrl = http://localhost:8080/auth/realms/master
 
 ###################################################################################
 #### AUTH get openid configuration
@@ -13,7 +13,7 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=password
 &client_id=naos-sample
-&client_secret=1beb5df9-01dd-46c3-84a8-b65eca50ad57
+&client_secret=naos-sample
 &resource=naos-sample
 &username=admin
 &password=admin
@@ -36,12 +36,12 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token
 &client_id=naos-sample
-&client_secret=1beb5df9-01dd-46c3-84a8-b65eca50ad57
+&client_secret=naos-sample
 &resource=naos-sample
 &refresh_token={{refresh_token}}
 
-@access_token = {{refresh_token_request.response.body.$.access_token}}
-@refresh_token = {{refresh_token_request.response.body.$.refresh_token}}
+# @access_token = {{refresh_token_request.response.body.$.access_token}}
+# @refresh_token = {{refresh_token_request.response.body.$.refresh_token}}
 
 ###################################################################################
 ### API get Api Gateway health                                                    #

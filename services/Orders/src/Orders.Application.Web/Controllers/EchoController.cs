@@ -24,6 +24,7 @@
                 new
                 {
                     message = $"echo {this.GetType().Assembly.GetName().Name}",
+                    authenticated = this.HttpContext.User?.Identity?.IsAuthenticated,
                     name = this.HttpContext.User.Identity.Name,
                     idToken = this.HttpContext.GetTokenAsync("id_token").Result,
                     accessToken = this.HttpContext.GetTokenAsync("access_token").Result,

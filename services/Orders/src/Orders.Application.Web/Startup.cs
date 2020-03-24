@@ -1,5 +1,6 @@
 ﻿namespace Naos.Sample.Orders.Application.Web
 {
+    using System;
     using HealthChecks.UI.Client;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Diagnostics.HealthChecks;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Logging;
     using Microsoft.IdentityModel.Tokens;
     using NSwag.AspNetCore;
 
@@ -32,7 +34,9 @@
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
+                options.RequireHttpsMetadata = false;
                 options.Authority = this.Configuration["Oidc:Authority"];
+                options.MetadataAddress = $"{this.Configuration["Oidc:Authority"].Replace("localhost", "keycloak", StringComparison.OrdinalIgnoreCase)}/.well-known/openid-configuration";
                 options.IncludeErrorDetails = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -56,6 +60,7 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
 
             app.UseRouting();

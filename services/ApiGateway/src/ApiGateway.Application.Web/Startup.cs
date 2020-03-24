@@ -11,6 +11,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Diagnostics.HealthChecks;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Logging;
     using Microsoft.IdentityModel.Tokens;
     using Ocelot.DependencyInjection;
     using Ocelot.Middleware;
@@ -47,7 +48,9 @@
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = false;
                     options.Authority = this.Configuration["Oidc:Authority"];
+                    options.MetadataAddress = $"{this.Configuration["Oidc:Authority"].Replace("localhost", "keycloak", StringComparison.OrdinalIgnoreCase)}/.well-known/openid-configuration";
                     options.IncludeErrorDetails = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -72,6 +75,7 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
             else
             {
@@ -81,7 +85,7 @@
             app.MapWhen(c => c.Request.Path == "/", a =>
             {
                 a.Run(async x =>
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace}</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a>&nbsp;<a href='/api/echo'>echo</a></p></body></html>").ConfigureAwait(false));
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace} ({Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")})</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a>&nbsp;<a href='/api/echo'>echo</a></p></body></html>").ConfigureAwait(false));
             });
 
             app.UseHealthChecks("/health", new HealthCheckOptions()

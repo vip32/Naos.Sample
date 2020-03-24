@@ -4,11 +4,12 @@
     using System.Linq;
     using System.Net;
     using Microsoft.AspNetCore.Authentication;
-    //using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Server.IIS;
 
     [Route("api/echo")]
-    //[Authorize/*(Roles = "admin")*/] // maps to jwt groups
+    [Authorize/*(Roles = "admin")*/] // maps to jwt groups
     [ApiController]
     public class EchoController : ControllerBase
     {
@@ -23,6 +24,7 @@
                 new
                 {
                     message = $"echo {this.GetType().Assembly.GetName().Name}",
+                    authenticated = this.HttpContext.User?.Identity?.IsAuthenticated,
                     name = this.HttpContext.User.Identity.Name,
                     idToken = this.HttpContext.GetTokenAsync("id_token").Result,
                     accessToken = this.HttpContext.GetTokenAsync("access_token").Result,
