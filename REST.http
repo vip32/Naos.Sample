@@ -6,21 +6,32 @@ GET {{baseUrl}}/.well-known/openid-configuration HTTP/1.1
 Content-Type: application/json
 
 ###################################################################################
-### AUTH get tokens
-# @name sign_in_request
+### AUTH sign in (password)
+# @name sign_in_password
 POST {{baseUrl}}/protocol/openid-connect/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=password
 &client_id=naos-sample
 &client_secret=naos-sample
-&resource=naos-sample
 &username=admin
 &password=admin
-&scope=openid
 
-@access_token = {{sign_in_request.response.body.$.access_token}}
-@refresh_token = {{sign_in_request.response.body.$.refresh_token}}
+@access_token = {{sign_in_password.response.body.$.access_token}}
+@refresh_token = {{sign_in_password.response.body.$.refresh_token}}
+
+###################################################################################
+### AUTH sign in (client_credentials)
+# @name sign_in_client_credentials
+POST {{baseUrl}}/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=naos-sample
+&client_secret=naos-sample
+
+@access_token = {{sign_in_client_credentials.response.body.$.access_token}}
+@refresh_token = {{sign_in_client_credentials.response.body.$.refresh_token}}
 
 ###################################################################################
 ### AUTH get user info
