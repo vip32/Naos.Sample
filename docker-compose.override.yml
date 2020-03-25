@@ -135,6 +135,10 @@ services:
       - mssqlscripts
     ports:
       - 8080:8080 # http://localhost:8080 (admin/admin)
+    volumes:
+      - ./tools/imports:/opt/jboss/keycloak/imports
+    command:
+      - "-b 0.0.0.0 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/jboss/keycloak/imports/keycloak-realm-export.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING -Dkeycloak.profile.feature.upload_scripts=enabled"
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
