@@ -65,17 +65,24 @@ services:
     command: /bin/bash -c 'until /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P "Abcd1234!" -Q "create database Keycloak"; do sleep 5; done'
 
   mongo:
-    image: mongo
+    image: mongo:latest
     container_name: mongo   # mongodb://mongo:27017,db2.example.net:2500/?connectTimeoutMS=300000
     restart: unless-stopped
+    hostname: mongodb
     ports:
       - 27017:27017
+    healthcheck:
+      # initiate the replica set https://zgadzaj.com/development/docker/docker-compose/turning-standalone-mongodb-server-into-a-replica-set-with-docker-compose
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
+      interval: 10s
+      start_period: 30s
 #    healthcheck:
 #      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
 #      interval: 10s
 #      timeout: 10s
 #      retries: 5
 #      start_period: 20s
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
     volumes:
       - mongo:/data/db
 
