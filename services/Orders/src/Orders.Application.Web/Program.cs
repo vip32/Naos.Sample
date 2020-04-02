@@ -15,7 +15,7 @@
         public static int Main(string[] args)
         {
             var configuration = GetConfiguration();
-            Log.Logger = CreateSerilogLogger(configuration);
+            Log.Logger = CreateLogger(configuration);
 
             try
             {
@@ -48,7 +48,7 @@
                 .UseSerilog()
                 .Build();
 
-        private static ILogger CreateSerilogLogger(IConfiguration configuration)
+        private static ILogger CreateLogger(IConfiguration configuration)
         {
             return new LoggerConfiguration()
                 .MinimumLevel.Verbose()
