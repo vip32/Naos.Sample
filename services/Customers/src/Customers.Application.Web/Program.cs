@@ -69,12 +69,12 @@
                 .AddEnvironmentVariables();
 
             var config = builder.Build();
-            if (config.GetValue<bool>("AzureAppConfiguration:Enabled", false))
+            if (config.GetValue("AzureAppConfiguration:Enabled", false))
             {
                 builder.AddAzureAppConfiguration(config["AzureAppConfiguration:ConnectionString"]);
             }
 
-            if (config.GetValue<bool>("AzureKeyVault:Enabled", false))
+            if (config.GetValue("AzureKeyVault:Enabled", false))
             {
                 builder.AddAzureKeyVault(
                     $"https://{config["AzureKeyVault:Name"]}.vault.azure.net/",
