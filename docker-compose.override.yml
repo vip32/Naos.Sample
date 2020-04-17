@@ -173,8 +173,8 @@ services:
       - 8500:8500 # http://localhost:8500/ui
       - 8300:8300
     volumes:
-      - ./config:/config
-      - ./_data/consul:/data
+      - ./.consul/config:/config
+      - ./.consul/data:/data
     command: agent -server -data-dir=/data -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect=1 -ui
 
 volumes:
