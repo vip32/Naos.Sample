@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\..\..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    <AdditionalFiles Include="CodeMetricsConfig.txt" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -24,6 +25,7 @@
     <WarningsAsErrors></WarningsAsErrors>
     <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
     <UseSharedCompilation>true</UseSharedCompilation> <!--roslyn build speed-->
+    <CodeAnalysisRuleSet>CodeMetrics.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
