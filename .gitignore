@@ -333,6 +333,4 @@ ASALocalRun/
 /tests/UnitTests/coverage.opencover.xml
 
 # Consul container data
-# .consul/
-.consul/data/serf/local.snapshot
-.consul/data/serf/remote.snapshot
+.consul/
