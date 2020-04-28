@@ -165,6 +165,15 @@ services:
       - DB_ADDR=mssql
       - DB_DATABASE=Keycloak
 
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: unless-stopped
+    ports:
+      - 5340:80 # http://localhost:5340
+    environment:
+      - ACCEPT_EULA=Y
+
   consul:
     container_name: consul # clustered: https://github.com/hashicorp/consul/blob/master/demo/docker-compose-cluster/docker-compose.yml
     image: consul:latest
@@ -172,8 +181,8 @@ services:
       - 8500:8500 # http://localhost:8500/ui
       - 8300:8300
     volumes:
-      - ./config:/config
-      - ./_data/consul:/data
+      - ./.consul/config:/config
+      - ./.consul/data:/data
     command: agent -server -data-dir=/data -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect=1 -ui
 
 volumes:

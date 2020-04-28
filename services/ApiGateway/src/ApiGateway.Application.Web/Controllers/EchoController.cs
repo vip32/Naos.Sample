@@ -6,7 +6,6 @@
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Server.IIS;
 
     [Route("api/echo")]
     [Authorize/*(Roles = "admin")*/] // maps to jwt groups

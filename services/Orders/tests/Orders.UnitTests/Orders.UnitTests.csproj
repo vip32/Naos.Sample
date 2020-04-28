@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Naos.Sample.Customers.UnitTests</AssemblyName>
-    <RootNamespace>Naos.Sample.Customers.UnitTests</RootNamespace>
+    <AssemblyName>Naos.Sample.Orders.UnitTests</AssemblyName>
+    <RootNamespace>Naos.Sample.Orders.UnitTests</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
