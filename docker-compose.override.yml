@@ -95,6 +95,14 @@ services:
     ports:
       - 8081:8081 # http://localhost:8081/
 
+  eventstore:
+    image: "eventstore:latest"
+    container_name: eventstore
+    restart: unless-stopped
+    ports:
+      - 2113:2113 # http://localhost:2113/ admin/changeit
+      - 1113:1113
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
