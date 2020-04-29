@@ -96,9 +96,12 @@ services:
       - 8081:8081 # http://localhost:8081/
 
   eventstore:
-    image: "eventstore:latest"
+    image: "eventstore/eventstore"
     container_name: eventstore
     restart: unless-stopped
+    environment:
+      - EVENTSTORE_RUN_PROJECTIONS=All
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
     ports:
       - 2113:2113 # http://localhost:2113/ admin/changeit
       - 1113:1113
