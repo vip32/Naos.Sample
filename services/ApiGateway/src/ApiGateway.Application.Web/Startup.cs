@@ -85,7 +85,7 @@
             app.MapWhen(c => c.Request.Path == "/", a =>
             {
                 a.Run(async x =>
-                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace} ({Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")})</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a>&nbsp;<a href='/api/echo'>echo</a></p></body></html>").ConfigureAwait(false));
+                    await x.Response.WriteAsync($"<html><body><h1>{this.GetType().Namespace} ({Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")})</h1><p><a href='/health'>health</a>&nbsp;<a href='/health/live'>liveness</a>&nbsp;<a href='/api/echo'>echo</a>&nbsp;<a href='http://localhost:5340' target='_blank'>logs</a></p></body></html>").ConfigureAwait(false));
             });
 
             app.UseHealthChecks("/health", new HealthCheckOptions()

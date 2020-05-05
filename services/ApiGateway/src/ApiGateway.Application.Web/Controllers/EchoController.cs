@@ -4,14 +4,22 @@
     using System.Linq;
     using System.Net;
     using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Authorization;
+    //using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     [Route("api/echo")]
-    [Authorize/*(Roles = "admin")*/] // maps to jwt groups
+    //[Authorize/*(Roles = "admin")*/] // maps to jwt groups
     [ApiController]
     public class EchoController : ControllerBase
     {
+        private readonly ILogger<EchoController> logger;
+
+        public EchoController(ILogger<EchoController> logger)
+        {
+            this.logger = logger;
+        }
+
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ValidationProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -19,6 +27,8 @@
         [Description("Echo")]
         public ActionResult Get()
         {
+            this.logger.LogInformation($"GET echo: {this.GetType().Namespace}");
+
             return this.Ok(
                 new
                 {
