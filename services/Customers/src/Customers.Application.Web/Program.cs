@@ -14,6 +14,7 @@
 
         public static int Main(string[] args)
         {
+            //Serilog.Debugging.SelfLog.Enable(msg => System.Diagnostics.Debug.WriteLine(msg));
             var configuration = GetConfiguration();
             Log.Logger = CreateLogger(configuration);
 
