@@ -4,6 +4,7 @@ services:
   # ============= SAMPLE SERVICES ======================================================================================================
   # ===================================================================================================================================
   apigateway.application.web:
+    container_name: naossample_application_apigateway
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -20,6 +21,7 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   customers.application.web:
+    container_name: naossample_application_customers
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -31,6 +33,7 @@ services:
                 # In a production environment the external port (5002) should be removed, kept here for microservice debugging purposes
 
   orders.application.web:
+    container_name: naossample_application_orders
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -45,7 +48,7 @@ services:
   # ===================================================================================================================================
   mssql:
     image: mcr.microsoft.com/mssql/server
-    container_name: mssql
+    container_name: naossample_mssql
     restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
@@ -60,13 +63,14 @@ services:
 
   mssqlscripts:
     image: mcr.microsoft.com/mssql-tools
+    container_name: naossample_mssqlscripts
     depends_on:
       - mssql
     command: /bin/bash -c 'until /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P "Abcd1234!" -Q "create database Keycloak"; do sleep 5; done'
 
   mongo:
     image: mongo:latest
-    container_name: mongo   # mongodb://mongo:27017,db2.example.net:2500/?connectTimeoutMS=300000
+    container_name: naossample_mongo   # mongodb://mongo:27017,db2.example.net:2500/?connectTimeoutMS=300000
     restart: unless-stopped
     hostname: mongodb
     ports:
@@ -88,7 +92,7 @@ services:
 
   mongo-express:
     image: mongo-express:latest
-    container_name: mongo-express
+    container_name: naossample_mongo-express
     depends_on:
       - mongo
     restart: unless-stopped
@@ -97,7 +101,7 @@ services:
 
   eventstore:
     image: eventstore/eventstore
-    container_name: eventstore
+    container_name: naossample_eventstore
     restart: unless-stopped
     environment:
       - EVENTSTORE_RUN_PROJECTIONS=All
@@ -108,7 +112,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
-    container_name: rabbitmq
+    container_name: naossample_rabbitmq
     restart: unless-stopped
     ports:
       - 5672:5672
@@ -118,7 +122,7 @@ services:
 
   jaeger:
     image: jaegertracing/all-in-one
-    container_name: jaeger
+    container_name: naossample_jaeger
     restart: unless-stopped
     ports:
       - 5775:5775/udp
@@ -131,7 +135,7 @@ services:
 
   zipkin:
     image: openzipkin/zipkin
-    container_name: zipkin
+    container_name: naossample_zipkin
     restart: unless-stopped
     environment:
       - STORAGE_TYPE=mem # more here https://github.com/openzipkin-attic/docker-zipkin mysql: https://www.linode.com/docs/uptime/analytics/zipkin-server-configuration-using-docker-and-mysql/
@@ -148,7 +152,7 @@ services:
 
   keycloak:
     image: jboss/keycloak
-    container_name: keycloak
+    container_name: naossample_keycloak
     restart: unless-stopped
     depends_on:
       - mssql
@@ -170,7 +174,7 @@ services:
 
   seq:
     image: datalust/seq:latest
-    container_name: seq
+    container_name: naossample_seq
     restart: unless-stopped
     ports:
       - 5340:80 # http://localhost:5340
@@ -178,8 +182,8 @@ services:
       - ACCEPT_EULA=Y
 
   consul:
-    container_name: consul # clustered: https://github.com/hashicorp/consul/blob/master/demo/docker-compose-cluster/docker-compose.yml
     image: consul:latest
+    container_name: naossample_consul # clustered: https://github.com/hashicorp/consul/blob/master/demo/docker-compose-cluster/docker-compose.yml
     ports:
       - 8500:8500 # http://localhost:8500/ui
       - 8300:8300
