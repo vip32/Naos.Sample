@@ -1,4 +1,4 @@
-﻿namespace Naos.Sample.ApiGateway.Application.Web
+﻿namespace Naos.Sample.ApiGateway.Presentation.Web
 {
     using System;
     using System.IO;

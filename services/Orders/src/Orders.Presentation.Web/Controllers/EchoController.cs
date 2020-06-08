@@ -1,4 +1,4 @@
-﻿namespace Naos.Sample.Orders.Application.Web.Controllers
+﻿namespace Naos.Sample.Orders.Presentation.Web.Controllers
 {
     using System.ComponentModel;
     using System.Linq;

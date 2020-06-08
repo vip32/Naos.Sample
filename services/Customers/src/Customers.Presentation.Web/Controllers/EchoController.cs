@@ -1,15 +1,16 @@
-﻿namespace Naos.Sample.ApiGateway.Application.Web.Controllers
+﻿namespace Naos.Sample.Customers.Presentation.Web.Controllers
 {
     using System.ComponentModel;
     using System.Linq;
     using System.Net;
+    using EnsureThat;
     using Microsoft.AspNetCore.Authentication;
-    //using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
     [Route("api/echo")]
-    //[Authorize/*(Roles = "admin")*/] // maps to jwt groups
+    [Authorize/*(Roles = "admin")*/] // maps to jwt groups
     [ApiController]
     public class EchoController : ControllerBase
     {

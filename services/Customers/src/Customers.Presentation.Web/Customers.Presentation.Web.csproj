@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <AssemblyName>Naos.Sample.Orders.Application.Web</AssemblyName>
-    <RootNamespace>Naos.Sample.Orders.Application.Web</RootNamespace>
-    <UserSecretsId>b8c78099-1d9b-47ee-8b02-98757e47143d</UserSecretsId>
+  	<AssemblyName>Naos.Sample.Customers.Presentation.Web</AssemblyName>
+    <RootNamespace>Naos.Sample.Customers.Presentation.Web</RootNamespace>
+    <UserSecretsId>4381e3d3-aa6c-4fcf-9a37-6b2d6a050952</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Customers\src\Customers.Application\Customers.Application.csproj" />
+    <ProjectReference Include="..\Customers.Application\Customers.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

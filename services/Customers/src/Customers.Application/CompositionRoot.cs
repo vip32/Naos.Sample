@@ -1,4 +1,4 @@
-﻿namespace Naos.Sample.Customers.Application
+﻿namespace Naos.Sample.Customers.Presentation
 {
     public class CompositionRoot
     {

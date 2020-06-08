@@ -1,4 +1,4 @@
-﻿namespace Naos.Sample.Orders.Application.Web
+﻿namespace Naos.Sample.Orders.Presentation.Web
 {
     using System;
     using HealthChecks.UI.Client;
