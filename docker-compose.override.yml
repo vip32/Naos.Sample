@@ -127,14 +127,20 @@ services:
       - naos
 
   eventstore:
-    image: eventstore/eventstore
+    image: eventstore/eventstore:latest
     container_name: naos_eventstore
     restart: unless-stopped
+    command: --dev --enable-external-tcp --ext-ip=0.0.0.0 --int-ip=0.0.0.0 --disable-external-tcp-tls # https://github.com/EventStore/EventStore/issues/2547
     environment:
       - EVENTSTORE_RUN_PROJECTIONS=All
       - EVENTSTORE_START_STANDARD_PROJECTIONS=true
+      - EVENTSTORE_CLUSTER_SIZE=1
+      - EVENTSTORE_INT_TCP_PORT=1112
+      - EVENTSTORE_EXT_TCP_PORT=1113
+      - EVENTSTORE_INT_HTTP_PORT=2112
+      - EVENTSTORE_EXT_HTTP_PORT=2113
     ports:
-      - 2113:2113 # http://localhost:2113/ admin/changeit
+      - 2113:2113 # https://localhost:2113/ admin/changeit
       - 1113:1113
     networks:
       - naos
