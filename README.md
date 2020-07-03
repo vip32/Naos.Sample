@@ -12,7 +12,7 @@ A mildly opiniated modern cloud service architecture blueprint + reference imple
                                                                     - Commands/Query + Handlers
                                                 .----------------.  - Messages/Queues + Handlers
    - WebApi/Mvc/                            .-->| Application    |  - Adapter Interfaces, Exceptions
-     SPA/Console program host              /    `----------------`  - View Models + Mappings
+     SPA/Console program host              /    `----------------`  - View Models(DTO) + Mappings
                                           /        |        ^
   .--------------.                       /         |        |
   .              |     .--------------. /          V        |  - Events, Aggregates, Services
