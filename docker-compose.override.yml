@@ -307,7 +307,7 @@ volumes:
     name: naos_consul
     driver: local
   seq:
-    name: zeta_seq
+    name: naos_seq
     driver: local
 #  portainer:
 #    driver: local
